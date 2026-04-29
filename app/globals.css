@@ -1,88 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Palette */
+  /* Brand colours */
   --color-caramel: #C9763A;
   --color-caramel-light: #F5DFC0;
-  --color-caramel-extra-light: #FBF6EE;
+  --color-caramel-lighter: #FBF6EE;
+  --color-caramel-dark: #7A3D0F;
+  --color-caramel-off: #FFFCF7;
+
   --color-ink: #12100B;
-  --color-muted: #6A5C48;
-  --color-dark-main: #0F0D09;
-  --color-dark-soft: #1A1710;
-  
+  --color-ink-muted: #6A5C48;
+  --color-ink-dark: #0F0D09;
+  --color-ink-darker: #080704;
+  --color-ink-dark-2: #1A1710;
+
   /* Fonts */
-  --font-display: "Playfair Display", serif;
-  --font-sans: "DM Sans", sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
 
+  /* Animations */
+  --animate-fade-up: fadeUp 0.6s ease both;
+  --animate-fade-up-delay: fadeUp 0.6s ease 0.15s both;
+  --animate-fade-up-delay-2: fadeUp 0.6s ease 0.3s both;
 
-/* Define the Keyframes */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-  
-  @keyframes reveal {
-    from { 
-      opacity: 0; 
-      transform: translateY(20px); 
-      filter: blur(4px);
-    }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
-      filter: blur(0);
-    }
-  }
-
-  /* Register the Animation Utilities */
-  --animation-float: float 5s ease-in-out infinite;
-  --animation-reveal: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-@layer utilities {
-  /* This allows you to use 'animate-delay-100' etc. */
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
+html {
+  scroll-behavior: smooth;
 }
 
-
-
-  /* FIX: Use var() instead of @apply for custom theme colors to avoid build errors */
-  .dash-frame {
-    background-color: var(--color-dark-soft);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 1rem; /* 16px */
-    overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  }
-  
-  .hero-pill {
-    background-color: var(--color-caramel-light);
-    color: var(--color-caramel-dark);
-    @apply inline-block px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6;
-  }
-
-  .card-glass {
-    background-color: var(--white);
-    border: 1px solid rgba(201, 118, 58, 0.15);
-    @apply rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
-  }
-
-
-@layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700&display=swap');
-
-  body {
-    background-color: var(--color-caramel-extra-light);
-    color: var(--color-ink);
-    @apply font-sans antialiased;
-  }
-
-a, button {
-    @apply transition-all duration-300 ease-in-out;
-  }
-
+body {
+  background-color: var(--color-caramel-lighter);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
-
-

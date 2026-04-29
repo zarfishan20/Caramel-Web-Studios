@@ -1,107 +1,131 @@
-import { Zap, BarChart3, ArrowRight } from "lucide-react";
+"use client";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden bg-caramel-extra-light">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center gap-16 px-8 lg:px-12 pt-28 pb-16 overflow-hidden animate-fade-up">
+      
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/hero-bg.jpg" 
+          alt="Modern London office"
+          fill
+          priority 
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-caramel-lighter/90 backdrop-blur-[2px]" />
+      </div>
+
+      {/* Left Content */}
+      <div className="relative z-10">
+        <div className="inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase px-4 py-1.5 rounded-full mb-6 bg-caramel-light text-caramel-dark">
+          <span className="w-1.5 h-1.5 rounded-full inline-block bg-caramel" />
+          Specialist web studio · London accountants
+        </div>
+
+        <h1 className="text-5xl lg:text-6xl font-serif font-black leading-[1.06] tracking-tight mb-6 text-ink">
+          Websites built
+          <br />
+          for <em className="italic text-caramel">accounting</em>
+          <br />
+          firms that grow.
+        </h1>
+
+        <p className="text-base leading-relaxed max-w-md mb-6 text-ink-muted">
+          We design, build, and maintain professional websites exclusively for
+          accountants in London — complete with AI chatbots, online booking,
+          and CRM integration.
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-8">
+          {["London-based", "Sector-specialist", "All-inclusive support"].map((t) => (
+            <span
+              key={t}
+              className="text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-md border border-caramel/20 text-caramel-dark bg-white/50"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4">
+          <Link
+            href="/book"
+            className="px-7 py-3 rounded-full font-bold text-sm transition-all bg-caramel text-white hover:bg-caramel-dark hover:shadow-lg hover:-translate-y-0.5"
+          >
+            Get a free audit
+          </Link>
+          <a
+            href="#services"
+            className="font-bold text-sm flex items-center gap-2 group text-ink"
+          >
+            See our services
+            <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Right Content: The "Locked" Mockup Container */}
+      <div className="relative z-10 flex items-center justify-center animate-fade-up-delay">
         
-        {/* Text Content - Animated with animate-reveal */}
-        <div className="z-10 animate-reveal">
-          <span className="hero-pill">
-            Specialist Web Studio · London Accountants
-          </span>
+        {/* WRAPPER: This locks the two elements together */}
+        <div className="relative inline-block">
           
-          <h1 className="font-display text-5xl md:text-7xl font-black leading-[1.05] tracking-tight text-ink mb-8">
-            Websites built<br />
-            for <em className="italic font-bold text-caramel ">accounting</em><br />
-            firms that grow.
-          </h1>
-          
-          <p className="text-lg text-muted max-w-md leading-relaxed mb-10 transition-all delay-100">
-            We design, build, and maintain professional digital systems exclusively for accountants in London.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link 
-              href="https://cal.com/caramelwebstudios/website-consultation"
-              className="group px-8 py-4 bg-caramel text-white font-bold rounded-full hover:bg-caramel-dark transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-caramel/20 active:scale-95"
-            >
-              Book a free review 
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link 
-              href="#work"
-              className="px-8 py-4 border border-caramel/20 text-ink font-bold rounded-full hover:bg-caramel/5 transition-all text-center active:scale-95"
-            >
-              View our work
-            </Link>
+          {/* 1. Lead Card (Locked to the Dashboard) */}
+          <div className="absolute -top-6 -right-6 z-20 rounded-xl p-4 w-40 shadow-xl bg-white border border-caramel/10 animate-fade-up-delay-2">
+            <p className="text-[10px] font-bold tracking-widest uppercase mb-1 text-caramel">New leads</p>
+            <p className="text-3xl font-serif font-bold text-ink">+34%</p>
+            <p className="text-[10px] text-ink-muted font-medium">Since launch</p>
+            <div className="mt-2 w-full h-1 bg-caramel/10 rounded-full overflow-hidden">
+               <div className="w-[70%] h-full bg-caramel rounded-full" />
+            </div>
           </div>
-        </div>
 
-        {/* Dash Frame Mockup - Animated with animate-float */}
-        <div className="relative animate-float">
-          {/* Subtle Background Glow */}
-          <div className="absolute -inset-10 bg-caramel/10 blur-3xl rounded-full opacity-60" />
-          
-          <div className="dash-frame relative group hover:border-caramel/30 transition-colors duration-500">
-            {/* Mockup Header */}
-            <div className="bg-white/5 px-6 py-3 flex items-center justify-between border-b border-white/5">
+          {/* 2. Dashboard Mockup (Browser frame) */}
+          <div className="w-80 rounded-2xl overflow-hidden shadow-2xl bg-ink-dark-2 border border-white/5 relative z-10">
+            {/* Chrome Bar */}
+            <div className="flex items-center justify-between px-4 py-2.5 bg-ink-dark border-b border-white/5">
               <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/20" />
+                <span className="w-2 h-2 rounded-full bg-red-500/80" />
+                <span className="w-2 h-2 rounded-full bg-yellow-400/80" />
+                <span className="w-2 h-2 rounded-full bg-green-500/80" />
               </div>
-              <div className="text-[10px] text-white/30 font-mono tracking-widest uppercase">
-                harris-accountants.co.uk
-              </div>
-              <div className="w-4 h-4" />
+              <span className="text-[10px] tracking-widest font-mono text-white/20 uppercase">cws-dashboard.io</span>
+              <div className="w-8" />
             </div>
 
-            {/* Mockup Body */}
-            <div className="p-8">
-              <div className="mb-8">
-                <div className="text-[10px] text-caramel font-bold uppercase tracking-[0.2em] mb-2">Live Performance</div>
-                <div className="font-display text-2xl text-white">Harris & Co. Chartered Accountants</div>
+            {/* Browser Body */}
+            <div className="p-5 space-y-4">
+              <div>
+                <p className="text-[10px] font-bold tracking-widest uppercase text-caramel/70 mb-1">Live Automation</p>
+                <p className="text-lg font-serif font-bold text-caramel-lighter leading-none">Accountant CRM</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                {/* Score Cards with Internal Hover Transitions */}
-                <div className="bg-white/5 p-5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors group/card">
-                  <div className="flex items-center gap-2 text-caramel mb-1">
-                    <BarChart3 size={16} />
-                    <span className="text-[10px] font-bold uppercase">SEO Score</span>
+              <div className="grid grid-cols-2 gap-3">
+                {[{ val: "98", lbl: "SEO Score" }, { val: "0.8s", lbl: "Load speed" }].map(({ val, lbl }) => (
+                  <div key={lbl} className="rounded-xl px-3 py-2.5 bg-white/5 border border-white/10">
+                    <p className="text-xl font-serif font-bold text-caramel">{val}</p>
+                    <p className="text-[9px] uppercase tracking-widest text-white/30 font-bold">{lbl}</p>
                   </div>
-                  <div className="text-3xl font-bold text-white transition-transform group-hover/card:scale-105">
-                    98<span className="text-sm text-white/30">/100</span>
-                  </div>
-                </div>
+                ))}
+              </div>
 
-                <div className="bg-white/5 p-5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors group/card">
-                  <div className="flex items-center gap-2 text-caramel mb-1">
-                    <Zap size={16} />
-                    <span className="text-[10px] font-bold uppercase">Load Time</span>
-                  </div>
-                  <div className="text-3xl font-bold text-white transition-transform group-hover/card:scale-105">
-                    0.8<span className="text-sm text-white/30">s</span>
-                  </div>
+              <div className="space-y-2">
+                <p className="text-[10px] font-bold tracking-widest uppercase text-caramel/70">AI Chatbot Status</p>
+                <div className="text-[10px] leading-relaxed px-3 py-3 rounded-2xl rounded-bl-sm bg-caramel/15 text-caramel-light border border-caramel/20">
+                  Confirmed: 10am Consultation pushed to <strong>HubSpot</strong>.
                 </div>
               </div>
 
-              {/* Mockup Bottom Activity */}
-              <div className="mt-6 p-4 bg-caramel/5 rounded-lg border border-caramel/10 flex items-center justify-between transition-all hover:bg-caramel/10">
-                <div className="flex items-center gap-3">
-                  <div className="relative flex h-2 w-2">
-                    <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-caramel opacity-75"></div>
-                    <div className="relative inline-flex rounded-full h-2 w-2 bg-caramel"></div>
-                  </div>
-                  <span className="text-xs text-white/70 italic">AI Chatbot: New lead captured...</span>
-                </div>
-                <span className="text-[10px] text-caramel font-bold animate-pulse">NOW</span>
+              <div className="flex items-center gap-2 rounded-xl px-3 py-2 bg-green-500/5 border border-green-500/20">
+                <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-green-500 animate-pulse" />
+                <span className="text-[10px] text-green-400 font-bold uppercase tracking-wide">Sync: Active</span>
               </div>
             </div>
           </div>
-        </div>
+        </div> {/* End of Locked Wrapper */}
       </div>
     </section>
   );

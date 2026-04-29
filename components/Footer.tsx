@@ -1,49 +1,52 @@
-import Link from 'next/link';
+"use client";
+
+import Link from "next/link";
+
+const services = ["Web Development","AI Chatbot","Booking Integration","CRM Integration","Web Care"];
+const company = ["About Us","Blog","FAQs","Contact","Privacy Policy"];
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-main text-white mt-12 py-12">
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-8 border-b border-white/5 pb-8">
-          
-          {/* Brand Column */}
-          <div className="space-y-3">
-            <div className="font-display text-xl font-bold">
-              Caramel <span className="text-caramel">Web</span> Studios
-            </div>
-            <p className="text-sm text-white/50 leading-relaxed max-w-xs">
-              Specialist web design for accountants. <br />
-              Trading as Bytesphere Digital Ltd. No. 16844459.
-            </p>
-          </div>
-
-          {/* Services Column */}
-          <div>
-            <h4 className="text-caramel text-xs font-bold uppercase tracking-wider mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-white/40">
-              <li><Link href="#dev" className="hover:text-caramel transition-colors">Web Dev</Link></li>
-              <li><Link href="#ai" className="hover:text-caramel transition-colors">AI Chatbot</Link></li>
-              <li><Link href="#care" className="hover:text-caramel transition-colors">Web Care</Link></li>
-            </ul>
-          </div>
-
-          {/* Company Column */}
-          <div>
-            <h4 className="text-caramel text-xs font-bold uppercase tracking-wider mb-4">Links</h4>
-            <ul className="space-y-2 text-sm text-white/40">
-              <li><Link href="/about" className="hover:text-caramel transition-colors">About</Link></li>
-              <li><Link href="/privacy" className="hover:text-caramel transition-colors">Privacy</Link></li>
-              <li><Link href="mailto:info@caramelwebstudios.com" className="hover:text-caramel transition-colors">Contact</Link></li>
-            </ul>
-          </div>
+    <footer className="px-8 lg:px-12 pt-14 pb-6" style={{ backgroundColor: "var(--color-ink-darker)" }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <div>
+          <p className="text-lg font-bold mb-2" style={{ fontFamily: "var(--font-serif)", color: "var(--color-caramel-lighter)" }}>
+            Caramel <span style={{ color: "var(--color-caramel)" }}>Web</span> Studios
+          </p>
+          <p className="text-sm leading-relaxed max-w-xs" style={{ color: "rgba(251,246,238,0.35)" }}>
+            Specialist web design and digital solutions for accounting firms across London. Trading under Bytesphere Digital Ltd. Registered in England &amp; Wales, No. 16844459.
+          </p>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-6 text-[10px] uppercase tracking-widest text-white/20">
-          <span>© 2023–2026 Caramel Web Studios</span>
-          <span className="mt-2 md:mt-0">London · Barking Office</span>
+        <div>
+          <h4 className="text-xs font-medium tracking-widest uppercase mb-4" style={{ color: "var(--color-caramel-lighter)" }}>Services</h4>
+          <ul className="space-y-2.5">
+            {services.map((s) => (
+              <li key={s}>
+                <Link href="#services" className="text-sm transition-colors" style={{ color: "rgba(251,246,238,0.35)", textDecoration: "none" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "var(--color-caramel)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(251,246,238,0.35)")}
+                >{s}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
+        <div>
+          <h4 className="text-xs font-medium tracking-widest uppercase mb-4" style={{ color: "var(--color-caramel-lighter)" }}>Company</h4>
+          <ul className="space-y-2.5">
+            {company.map((c) => (
+              <li key={c}>
+                <Link href="#" className="text-sm transition-colors" style={{ color: "rgba(251,246,238,0.35)", textDecoration: "none" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "var(--color-caramel)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(251,246,238,0.35)")}
+                >{c}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="flex flex-wrap justify-between items-center gap-3 pt-5 text-xs" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", color: "rgba(251,246,238,0.3)" }}>
+        <span>© 2023–2026 Caramel Web Studios. All rights reserved.</span>
+        <span>Bytesphere Digital Ltd · Company No. 16844459</span>
       </div>
     </footer>
   );
