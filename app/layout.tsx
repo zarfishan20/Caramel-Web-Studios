@@ -3,6 +3,7 @@ import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Chatbot from "@/components/Chatbot";
 
 
 
@@ -46,6 +47,8 @@ export default function RootLayout({
          
             {children}
           <Footer />
+
+          <Chatbot />
         </main>
       </body>
     </html>
