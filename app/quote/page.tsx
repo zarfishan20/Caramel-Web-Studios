@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
-import { Check, ChevronRight, ChevronLeft, Send, Sparkles, User, Building2, Clock3, ArrowLeft, Target, MessageCircle, Zap, Handshake } from "lucide-react";
+import { Check, ChevronRight, ChevronLeft, Send, Sparkles, User, Building2, Clock3, } from "lucide-react";
 
 interface FormData {
   firmName: string;
@@ -95,7 +95,7 @@ export default function PricingQuotePage() {
 
 
       {/* 3. Interactive Split Section Container */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] w-full mx-auto flex-1 items-stretch py-12 lg:py-16 gap-8 lg:gap-12 px-4 sm:px-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 max-w-350 w-full mx-auto flex-1 items-stretch py-12 lg:py-16 gap-8 lg:gap-12 px-4 sm:px-8">
         
         {/* Left Card: Value Deck Context */}
         <div className="lg:col-span-5 bg-charcoal p-8 lg:p-10 text-caramel-light flex flex-col justify-between rounded-2xl border border-caramel/10 shadow-lg">
@@ -172,7 +172,7 @@ export default function PricingQuotePage() {
               </div>
 
               {/* Progress Tracker */}
-              <div className="flex h-[3px] bg-caramel-light">
+              <div className="flex h-0.75 bg-caramel-light">
                 {Array.from({ length: totalSteps }).map((_, i) => (
                   <div
                     key={i}
@@ -246,7 +246,7 @@ export default function PricingQuotePage() {
                     </div>
                     <div>
                       <label className="block text-[10px] font-bold uppercase tracking-widest text-charcoal/60 mb-2">What features do you need?</label>
-                      <div className="grid grid-cols-1 gap-2 max-h-[220px] overflow-y-auto pr-1">
+                      <div className="grid grid-cols-1 gap-2 max-h-55 overflow-y-auto pr-1">
                         {requirementsOptions.map((option) => {
                           const selected = formData.requirements.includes(option);
                           return (
