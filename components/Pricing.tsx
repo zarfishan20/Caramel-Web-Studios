@@ -68,7 +68,7 @@ const plans: Record<string, Plan[]> = {
     { 
       tier: "Retainer", 
       name: "Monthly Care Plan", 
-      price: "£200", 
+      price: "£150", 
       priceSuffix: "/mo", 
      desc: "Essential for AI Chatbot functionality, hosting, and CRM monitoring.", 
       features: [

@@ -1,22 +1,29 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, DM_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Chatbot from "@/components/Chatbot";
+import Cursor from "@/components/Cursor";
 
 
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["700", "900"],
+  weight: ["300", "400", "600"],
+  variable: "--font-cormorant",
 });
 
-const dmSans = DM_Sans({
+const dmMono = DM_Mono({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
   weight: ["300", "400", "500"],
+  variable: "--font-dm-mono",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-syne",
 });
 
 export const metadata: Metadata = {
@@ -41,7 +48,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${playfair.variable} ${dmSans.variable} font-sans`}>
+      <body className={`${dmMono.variable} ${cormorant.variable} ${syne.variable}`}>
+
+        <Cursor />
          <main>
           <Navbar />
          

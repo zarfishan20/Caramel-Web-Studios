@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, FormEvent, useRef, useEffect } from "react";
-import { MessageSquare, X, Send, Bot, Calendar, Sparkles } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { MessageSquare, X, Send, Bot } from "lucide-react";
 import Link from "next/link";
 
 interface Message {
@@ -10,6 +9,10 @@ interface Message {
   text: string;
   sender: "bot" | "user";
   timestamp: string;
+  link?: {
+    text: string;
+    url: string;
+  };
 }
 
 export default function Chatbot() {
@@ -19,7 +22,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     { 
       id: 1, 
-      text: "Welcome to Caramel Web Studios. I am your concierge. How may we elevate your digital presence today?", 
+      text: "Welcome to Caramel Web Studios. How can we assist with your digital project today?", 
       sender: "bot",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
@@ -27,7 +30,6 @@ export default function Chatbot() {
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to latest message
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo({
@@ -41,197 +43,156 @@ export default function Chatbot() {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
-    const userText = inputValue.toLowerCase();
+    const userText = inputValue.toLowerCase().trim();
     const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     
-    // 1. Add User Message
     const userMsg: Message = { id: Date.now(), text: inputValue, sender: "user", timestamp: now };
     setMessages((prev) => [...prev, userMsg]);
     setInputValue("");
 
-    // 2. Trigger "Concierge is thinking" state
-    setTimeout(() => setIsTyping(true), 600);
+    setTimeout(() => setIsTyping(true), 400);
 
-    // 3. Smart Response Logic
     setTimeout(() => {
       setIsTyping(false);
       let responseText = "";
+      let responseLink: { text: string; url: string } | undefined = undefined;
 
-      if (userText.includes("pricing") || userText.includes("cost") || userText.includes("rate")) {
-        responseText = "Our bespoke digital solutions are tailored to your firm's goals. Projects typically start from £5,000. Would you like to schedule a discovery call for a precise quote?";
-      } else if (userText.includes("portfolio") || userText.includes("work") || userText.includes("show me")) {
-        responseText = "Certainly. Our portfolio features award-winning designs for London's leading firms. You can explore our 'Masterpieces' section on the main site.";
-      } else if (userText.includes("audit") || userText.includes("free")) {
-        responseText = "Excellent choice. Our Free Digital Audit identifies high-impact opportunities for your brand. You can book one directly using the link below.";
-      } else if (userText.includes("hello") || userText.includes("hi") || userText.includes("hey")) {
-        responseText = "Greetings. I'm here to assist you with any inquiries regarding our design and development services. What can I do for you?";
-      } else {
-        responseText = "That is a great question. I am flagging this for our London strategy team to provide a detailed response. Is there anything else you'd like to know in the meantime?";
+      if (userText === "hi" || userText === "hello" || userText === "hey" || userText.startsWith("hi ")) {
+        responseText = "Hello. I am here to help you navigate our services. Feel free to ask about our pricing, view our portfolio, or ask how to book a website review.";
+      } 
+      else if (userText.includes("book") || userText.includes("schedule") || userText.includes("call") || userText.includes("meeting")) {
+        responseText = "You can schedule your free website review directly on this page using the calendar widget on the left, or visit our /book page to choose a convenient time slot.";
+      } 
+      // Pricing action forwards them to your project inquiry form
+      else if (userText.includes("pricing") || userText.includes("cost") || userText.includes("rate")) {
+        responseText = "Our web development and design projects are tailored specifically to your accounting firm's needs. Please fill out our quick quote form so we can provide an accurate estimate.";
+        responseLink = {
+          text: "Fill out the Quote Form",
+          url: "/quote" // Swap this with your actual form URL path if different (e.g., "/quote" or "/contact")
+        };
+      } 
+      else if (userText.includes("portfolio") || userText.includes("work")) {
+        responseText = "You can view our case studies and previous project work directly in the 'Masterpieces' section of our main menu.";
+      } 
+      else if (userText.includes("audit") || userText.includes("free")) {
+        responseText = "We provide a complimentary Digital Audit to review your current website performance. Just type 'book' if you would like to pick a time for an introductory session.";
+      } 
+      else {
+        responseText = "Thank you for your message. I have logged these details for our client strategy team, and a representative will follow up with you shortly.";
       }
 
       const botMsg: Message = { 
         id: Date.now() + 1, 
         text: responseText, 
         sender: "bot",
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        link: responseLink
       };
       setMessages((prev) => [...prev, botMsg]);
-    }, 2200);
+    }, 1200);
   };
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[100] flex flex-col items-end font-sans">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end font-sans text-[#2A2421]">
       
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20, scale: 0.95, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: 20, scale: 0.95, filter: "blur(10px)" }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="
-              mb-4 sm:mb-6 
-              w-[calc(100vw-2rem)] sm:w-[410px] 
-              h-[75vh] sm:h-[620px] 
-              bg-white/95 backdrop-blur-2xl 
-              rounded-[2.2rem] sm:rounded-[2.8rem] 
-              shadow-[0_25px_70px_-15px_rgba(0,0,0,0.35)] 
-              border border-caramel/20 
-              overflow-hidden flex flex-col
-            "
-          >
-            {/* Header: Concierge Branding */}
-            <div className="bg-ink p-6 sm:p-8 flex items-center justify-between relative overflow-hidden shrink-0">
-              <div className="absolute -top-6 -right-6 p-4 opacity-[0.04] pointer-events-none">
-                <Sparkles size={200} className="text-caramel" />
+      {isOpen && (
+        <div className="
+          mb-4
+          w-[calc(100vw-2rem)] sm:w-90 
+          h-125 max-h-[80vh]
+          bg-[#FDFBF7] 
+          rounded-2xl 
+          shadow-xl 
+          border border-[#C5A880]/30 
+          overflow-hidden flex flex-col
+        ">
+          {/* Header */}
+          <div className="bg-[#2A2421] p-4 flex items-center justify-between shrink-0">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-[#3A322E] flex items-center justify-center border border-[#C5A880]/20">
+                <Bot className="w-5 h-5 text-[#C5A880]" />
               </div>
-              
-              <div className="flex items-center gap-4 z-10">
-                <div className="relative">
-                  <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-tr from-caramel via-caramel-light to-white flex items-center justify-center shadow-inner">
-                    <Bot className="w-6 h-6 text-ink" />
-                  </div>
-                  <motion.div 
-                    animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
-                    transition={{ repeat: Infinity, duration: 2.5 }}
-                    className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-ink rounded-full"
-                  />
-                </div>
-                <div>
-                  <p className="text-white text-base sm:text-xl font-semibold tracking-tight">CWS Concierge</p>
-                  <p className="text-caramel/70 text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-medium">Bespoke Digital Support</p>
-                </div>
+              <div>
+                <p className="text-[#FDFBF7] text-sm font-medium tracking-wide">CWS Concierge</p>
+                <p className="text-[#C5A880] text-[10px] tracking-wider uppercase font-medium">Support Assistant</p>
               </div>
-              <button 
-                onClick={() => setIsOpen(false)} 
-                className="z-10 p-2 text-white/30 hover:text-white transition-all bg-white/5 hover:bg-white/10 rounded-full"
+            </div>
+            <button 
+              onClick={() => setIsOpen(false)} 
+              className="text-[#C5A880]/60 hover:text-[#C5A880] p-1 rounded transition-colors"
+              aria-label="Close chat"
+            >
+              <X size={18} />
+            </button>
+          </div>
+
+          {/* Chat History Area */}
+          <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F9F5EF]">
+            {messages.map((msg) => (
+              <div 
+                key={msg.id} 
+                className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} gap-1`}
               >
-                <X size={20} />
+                <div className={`max-w-[85%] px-3.5 py-2 text-sm rounded-xl flex flex-col gap-2 ${
+                  msg.sender === 'user' 
+                    ? 'bg-[#2A2421] text-[#FDFBF7] rounded-tr-none shadow-sm' 
+                    : 'bg-[#FDFBF7] border border-[#C5A880]/20 text-[#2A2421] rounded-tl-none shadow-xs'
+                }`}>
+                  <span>{msg.text}</span>
+                  
+                  {/* Clean form link container for pricing requests */}
+                  {msg.link && (
+                    <Link 
+                      href={msg.link.url}
+                      className="mt-1 block text-center bg-[#2A2421] text-[#C5A880] font-medium py-2 px-3 rounded-lg text-xs hover:bg-[#3A322E] transition-colors border border-[#C5A880]/20"
+                    >
+                      {msg.link.text}
+                    </Link>
+                  )}
+                </div>
+                <span className="text-[9px] text-[#2A2421]/60 font-medium px-1 tracking-wider">{msg.timestamp}</span>
+              </div>
+            ))}
+
+            {/* Typing Placeholder */}
+            {isTyping && (
+              <div className="flex gap-1 p-2 bg-[#FDFBF7] border border-[#C5A880]/20 rounded-lg w-fit items-center">
+                <span className="text-xs text-[#C5A880] font-medium px-1">Typing...</span>
+              </div>
+            )}
+          </div>
+
+          {/* Input Form Footer */}
+          <form onSubmit={handleSendMessage} className="p-3 bg-[#FDFBF7] border-t border-[#C5A880]/20 shrink-0">
+            <div className="flex items-center gap-2 bg-[#F9F5EF] border border-[#C5A880]/20 rounded-lg p-1 focus-within:border-[#C5A880] focus-within:bg-[#FDFBF7] transition-all">
+              <input 
+                type="text" 
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Ask a question..." 
+                className="flex-1 bg-transparent px-3 py-1.5 text-sm outline-none text-[#2A2421] placeholder:text-[#2A2421]/40"
+              />
+              <button 
+                type="submit"
+                disabled={!inputValue.trim()}
+                className="bg-[#2A2421] hover:bg-[#3A322E] p-2 rounded-md text-[#C5A880] disabled:opacity-30 transition-all shadow-xs"
+                aria-label="Send message"
+              >
+                <Send size={14} />
               </button>
             </div>
+          </form>
+        </div>
+      )}
 
-            {/* Conversation Flow */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 bg-gradient-to-b from-transparent to-caramel/[0.03]">
-              {messages.map((msg) => (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  key={msg.id} 
-                  className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} gap-2`}
-                >
-                  <div className={`max-w-[88%] px-6 py-4 rounded-[1.8rem] text-[13.5px] sm:text-[14.5px] leading-relaxed shadow-sm ${
-                    msg.sender === 'user' 
-                      ? 'bg-ink text-white rounded-br-none shadow-xl shadow-ink/10' 
-                      : 'bg-white border border-caramel/15 text-ink rounded-bl-none'
-                  }`}>
-                    {msg.text}
-                  </div>
-                  <span className="text-[8.5px] text-ink/30 uppercase tracking-[0.15em] font-bold px-2">{msg.timestamp}</span>
-                </motion.div>
-              ))}
-
-              {/* Dynamic Typing Indicator */}
-              <AnimatePresence>
-                {isTyping && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="flex flex-col items-start gap-2"
-                  >
-                    <div className="bg-white border border-caramel/15 px-6 py-4 rounded-[1.8rem] rounded-bl-none shadow-sm flex gap-2">
-                      {[0, 1, 2].map((i) => (
-                        <motion.div
-                          key={i}
-                          animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.1, 0.9] }}
-                          transition={{ repeat: Infinity, duration: 1.4, delay: i * 0.2 }}
-                          className="w-1.5 h-1.5 bg-caramel rounded-full"
-                        />
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Contextual Actions */}
-              {messages.length < 5 && !isTyping && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex flex-col gap-3 pt-4">
-                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-caramel/60 ml-2">Recommended</p>
-                  <Link 
-                    href="/book" 
-                    className="flex items-center justify-between p-5 rounded-2xl bg-caramel text-ink font-bold text-[11px] sm:text-xs shadow-xl shadow-caramel/20 group hover:translate-y-[-2px] transition-all"
-                  >
-                    Book Free Strategic Audit
-                    <Calendar size={18} className="group-hover:rotate-12 transition-transform" />
-                  </Link>
-                </motion.div>
-              )}
-            </div>
-
-            {/* Premium Input Bar */}
-            <form onSubmit={handleSendMessage} className="p-6 sm:p-8 bg-white border-t border-neutral-50 shrink-0">
-              <div className="flex items-center gap-2 bg-neutral-50 p-2 rounded-full border border-neutral-100 focus-within:border-caramel/30 focus-within:bg-white transition-all duration-500 shadow-inner">
-                <input 
-                  type="text" 
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="How can we help?" 
-                  className="flex-1 bg-transparent px-5 py-2 text-sm focus:outline-none text-ink placeholder:text-ink/20"
-                />
-                <button 
-                  type="submit"
-                  disabled={!inputValue.trim()}
-                  className="bg-ink p-3.5 rounded-full text-caramel hover:scale-110 active:scale-95 transition-all disabled:opacity-5 shadow-lg shadow-ink/20"
-                >
-                  <Send size={18} />
-                </button>
-              </div>
-            </form>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Floating Toggle Icon */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      {/* Primary Toggle Action Button */}
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-15 h-15 sm:w-18 sm:h-18 rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.25)] transition-all duration-500 ${
-          isOpen ? "bg-white text-ink" : "bg-ink text-caramel"
-        }`}
+        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#2A2421] hover:bg-[#3A322E] text-[#C5A880] flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all border border-[#C5A880]/20"
+        aria-label={isOpen ? "Close chat panel" : "Open support chat panel"}
       >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
-              <X size={28} />
-            </motion.div>
-          ) : (
-            <motion.div key="open" initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}>
-              <MessageSquare size={30} fill="currentColor" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
+        {isOpen ? <X size={24} /> : <MessageSquare size={24} fill="currentColor" />}
+      </button>
     </div>
   );
 }

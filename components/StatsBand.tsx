@@ -11,16 +11,20 @@ const stats = [
 
 export default function StatsBand() {
   return (
-    <div
-      className="py-10 px-8 lg:px-12 flex flex-wrap justify-around gap-6"
-      style={{ backgroundColor: "var(--color-ink)" }}
-    >
-      {stats.map(({ num, desc }) => (
-        <div key={num} className="text-center">
-          <p className="text-4xl font-bold leading-none" style={{ fontFamily: "var(--font-serif)", color: "var(--color-caramel)" }}>{num}</p>
-          <p className="text-sm mt-2" style={{ color: "rgba(251,246,238,0.5)" }}>{desc}</p>
-        </div>
-      ))}
+ <div className="py-10 px-8 lg:px-12 flex flex-wrap justify-around gap-6 bg-charcoal">
+  {stats.map(({ num, desc }) => (
+    <div key={num} className="text-center">
+      {/* Number styled with Syne serif and Caramel gold */}
+      <p className="text-4xl font-bold leading-none font-serif-tech text-caramel">
+        {num}
+      </p>
+      
+      {/* Description styled with 50% opacity Caramel Light */}
+      <p className="text-sm mt-2 text-caramel-light/50 font-mono-tech">
+        {desc}
+      </p>
     </div>
+  ))}
+</div>
   );
 }

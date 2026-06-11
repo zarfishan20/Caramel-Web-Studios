@@ -1,45 +1,80 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colours */
-  --color-caramel: #C9763A;
-  --color-caramel-light: #F5DFC0;
-  --color-caramel-lighter: #FBF6EE;
-  --color-caramel-dark: #7A3D0F;
-  --color-caramel-off: #FFFCF7;
+  /* Brand Typography Engine */
+  --font-serif-tech: "Syne", Georgia, serif;
+  --font-mono-tech: "DM Mono", Courier New, monospace;
+  --font-display: "Cabinet Grotesk", sans-serif;
 
-  --color-ink: #12100B;
-  --color-ink-muted: #6A5C48;
-  --color-ink-dark: #0F0D09;
-  --color-ink-darker: #080704;
-  --color-ink-dark-2: #1A1710;
+  /* Caramel Web Studios Custom Palette */
+  --color-caramel: #c58d59;
+  --color-caramel-dark: #946235;
+  --color-caramel-light: #f9f3eb;
+  
+  --color-cream: #faf8f5;
+  --color-charcoal: #2b2621;         /* Your new dark espresso base */
+  --color-charcoal-soft: #38312b;    /* A slightly lighter espresso tint for elements */
 
-  /* Fonts */
-  --font-serif: var(--font-playfair), Georgia, serif;
-  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  
+  /* Your precise deep eucalyptus/pine teal shade */
+  --color-studio-teal: #317061;
 
-  /* Animations */
-  --animate-fade-up: fade-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
---animate-fade-up-delay: fade-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
---animate-fade-up-delay-2: fade-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+  /* Typography Fallbacks */
+  --color-charcoal-muted: #5e6565;
+
+  /* Fluid UI Keyframe Animations */
+  --animate-fade-up: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fadeIn 0.4s ease-out forwards;
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  @keyframes fade-soft {
-  from { opacity: 0 }
-  to { opacity: 1 }
-}
-}
-
-html {
-  scroll-behavior: smooth;
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
 
-body {
-  background-color: var(--color-caramel-lighter);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
+/* Base Overrides & Tailwind v4 Workarounds */
+@layer base {
+  html {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* 🛠️ FIX: Hides the default black pointer on all elements, links, and buttons */
+  *, html, body, a, button, input {
+    cursor: none !important;
+  }
+
+  /* CRITICAL FIX: Fixes the Tailwind v4 bug where writing plain 'border' 
+    inherits 'currentColor' (rendering thick white borders over dark sections).
+    This forces a soft, elegant neutral boundary fallback layout globally.
+  */
+  *, ::after, ::before {
+    border-color: rgba(20, 22, 22, 0.12);
+  }
+}
+
+/* Custom Component Utility Layer */
+@layer utilities {
+  .backdrop-blur-xs {
+    backdrop-filter: blur(4px);
+  }
+  /* Adds a high-end cinematic transition easing for slide-fills */
+  .transition-shutter {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.35s ease;
+  }
 }
