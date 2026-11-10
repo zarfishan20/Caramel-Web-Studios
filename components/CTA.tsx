@@ -22,13 +22,13 @@ export default function CTA() {
       >
         <div>
           <p className="mb-6 font-mono-tech text-[10px] uppercase tracking-[.2em] text-white/70">Your next chapter starts here</p>
-          <h2 className="max-w-4xl font-serif-tech text-5xl font-bold leading-[1.02] tracking-[-.05em] text-white sm:text-6xl lg:text-8xl">
+          <h2 className="max-w-4xl font-serif-tech text-4xl font-bold leading-[1.08] tracking-[-.045em] text-white sm:text-5xl lg:text-6xl">
             Ready to make
             <span className="block italic font-normal">your firm stand out?</span>
           </h2>
         </div>
         <div className="max-w-lg lg:justify-self-end">
-          <p className="text-base leading-8 text-white/80">
+          <p className="text-[1.05rem] leading-[1.8] text-white/85">
             Book a free 30-minute website review. We&apos;ll look at your current
             online presence and talk through practical ways to make it work harder
             for your firm — no jargon, no pressure.
