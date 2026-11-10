@@ -28,7 +28,7 @@ export default function CTA() {
         </div>
         <div className="max-w-lg lg:justify-self-end">
           <p className="text-[1.05rem] leading-[1.8] text-white/90">
-            Book a free 30-minute website review. We&apos;ll look at how your firm
+            Book a free 15-minute website review. We&apos;ll look at how your firm
             comes across online, discuss what you want to improve and suggest
             practical next steps — with no obligation.
           </p>
