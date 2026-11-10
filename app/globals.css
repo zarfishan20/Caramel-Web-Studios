@@ -4,6 +4,8 @@
   --font-serif-tech: "Syne", Georgia, serif;
   --font-mono-tech: "DM Mono", Courier New, monospace;
   --font-display: "Cabinet Grotesk", sans-serif;
+  --font-syne: "Syne", sans-serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
 
   --color-caramel: #c58d59;
   --color-caramel-dark: #946235;
@@ -13,6 +15,17 @@
   --color-charcoal-soft: #38312b;
   --color-studio-teal: #317061;
   --color-charcoal-muted: #5e6565;
+  --color-caramel-off: #f4eee6;
+  --color-caramel-lighter: #f9f3eb;
+  --color-ink: #2b2621;
+  --color-ink-dark: #2b2621;
+  --color-ink-muted: #5e6565;
+  --color-warm-gray: #8a8178;
+  --color-teal: #317061;
+  --color-caramel-deep: #946235;
+
+  --animate-fadeIn: fadeIn .4s ease-out both;
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 }
 
 :root {
