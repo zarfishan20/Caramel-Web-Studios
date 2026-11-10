@@ -1,80 +1,169 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Typography Engine */
   --font-serif-tech: "Syne", Georgia, serif;
   --font-mono-tech: "DM Mono", Courier New, monospace;
   --font-display: "Cabinet Grotesk", sans-serif;
 
-  /* Caramel Web Studios Custom Palette */
   --color-caramel: #c58d59;
   --color-caramel-dark: #946235;
   --color-caramel-light: #f9f3eb;
-  
   --color-cream: #faf8f5;
-  --color-charcoal: #2b2621;         /* Your new dark espresso base */
-  --color-charcoal-soft: #38312b;    /* A slightly lighter espresso tint for elements */
-
-  
-  /* Your precise deep eucalyptus/pine teal shade */
+  --color-charcoal: #2b2621;
+  --color-charcoal-soft: #38312b;
   --color-studio-teal: #317061;
-
-  /* Typography Fallbacks */
   --color-charcoal-muted: #5e6565;
-
-  /* Fluid UI Keyframe Animations */
-  --animate-fade-up: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-fade-in: fadeIn 0.4s ease-out forwards;
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
 }
 
-/* Base Overrides & Tailwind v4 Workarounds */
-@layer base {
-  html {
-    background-color: var(--color-cream);
-    color: var(--color-charcoal);
-    scroll-behavior: smooth;
-  }
-
-  body {
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  }
-
-  /* 🛠️ FIX: Hides the default black pointer on all elements, links, and buttons */
-  *, html, body, a, button, input {
-    cursor: none !important;
-  }
-
-  /* CRITICAL FIX: Fixes the Tailwind v4 bug where writing plain 'border' 
-    inherits 'currentColor' (rendering thick white borders over dark sections).
-    This forces a soft, elegant neutral boundary fallback layout globally.
-  */
-  *, ::after, ::before {
-    border-color: rgba(20, 22, 22, 0.12);
-  }
+:root {
+  color-scheme: light;
+  --page-gutter: clamp(1.25rem, 5vw, 5rem);
 }
 
-/* Custom Component Utility Layer */
-@layer utilities {
-  .backdrop-blur-xs {
-    backdrop-filter: blur(4px);
-  }
-  /* Adds a high-end cinematic transition easing for slide-fills */
-  .transition-shutter {
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.35s ease;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  background: var(--color-cream);
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(197, 141, 89, .28);
+  color: var(--color-charcoal);
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+* {
+  border-color: rgba(43, 38, 33, .12);
+}
+
+.site-shell {
+  overflow: clip;
+}
+
+.section-wrap {
+  width: min(100% - (var(--page-gutter) * 2), 1440px);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  color: var(--color-caramel-dark);
+  font-family: var(--font-dm-mono), monospace;
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.8rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.soft-grid {
+  background-image: linear-gradient(rgba(197,141,89,.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197,141,89,.075) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.hero-orb {
+  position: absolute;
+  width: 24rem;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(197,141,89,.23), rgba(197,141,89,0) 68%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.nav-link {
+  position: relative;
+  color: rgba(43,38,33,.72);
+  font-size: .82rem;
+  font-weight: 500;
+  transition: color .25s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -.45rem;
+  height: 1px;
+  background: var(--color-caramel);
+  transition: right .3s cubic-bezier(.2,.8,.2,1);
+}
+.nav-link:hover { color: var(--color-charcoal); }
+.nav-link:hover::after { right: 0; }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  border-radius: 9999px;
+  padding: .8rem 1.2rem;
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  font-size: .78rem;
+  font-weight: 600;
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  background: var(--color-studio-teal);
+  box-shadow: 0 10px 25px rgba(49,112,97,.18);
+}
+
+.service-card {
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 24px 55px rgba(43,38,33,.09);
+  border-color: rgba(197,141,89,.45);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -12px, 0) rotate(1deg); }
+}
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+.animate-shimmer { animation: shimmer 2.8s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }
