@@ -119,7 +119,7 @@ export default function AccountantWebDesignPage() {
             prospective clients to contact your firm.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="/book" className="inline-flex items-center justify-center gap-3 rounded-full bg-caramel px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-studio-teal">
+            <Link href="/book" className="inline-flex items-center justify-center gap-3 rounded-full bg-caramel px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-caramel-dark">
               Book a free website review <ArrowRight size={16} />
             </Link>
             <Link href="/#services" className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-4 text-sm font-semibold text-cream transition-colors hover:border-caramel hover:text-caramel">
