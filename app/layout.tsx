@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Chatbot from "@/components/Chatbot";
 import Cursor from "@/components/Cursor";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 
 
@@ -59,6 +60,7 @@ export default function RootLayout({
 
           <Chatbot />
         </main>
+        <SpeedInsights />
       </body>
     </html>
   );
