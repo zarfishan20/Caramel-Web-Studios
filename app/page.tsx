@@ -8,7 +8,7 @@ import CTA from "@/components/CTA";
 
 export default function Home() {
   return (
-    <div className="site-shell">
+    <main className="site-shell">
       <Hero />
       <NicheBand />
       <StatsBand />
@@ -16,6 +16,6 @@ export default function Home() {
       <HowItWorks />
       <Testimonial />
       <CTA />
-    </div>
+    </main>
   );
 }
