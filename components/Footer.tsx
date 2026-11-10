@@ -57,7 +57,7 @@ export default function Footer() {
         <div className="flex flex-col gap-5 pt-7 text-[10px] text-cream/35 sm:flex-row sm:items-end sm:justify-between">
           <div className="space-y-1 text-center sm:text-left">
             <p>© 2023–{currentYear} Caramel Web Studios. All rights reserved.</p>
-            <p>Trading under Bytesphere Digital Ltd · Company No. 16844459</p>
+            <p>Caramel Web Studios is a trading name of Bytesphere Digital Ltd. Registered in England and Wales · Company No. 16844459</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4 tracking-wide sm:justify-end">
             <Link href="/sitemap" className="transition-colors hover:text-caramel">Sitemap</Link>
