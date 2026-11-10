@@ -238,7 +238,7 @@ export default function AccountantWebDesignPage() {
               Arrange a free 15-minute review and talk through what your practice needs.
             </p>
           </div>
-          <Link href="/book" className="inline-flex shrink-0 items-center gap-3 rounded-full bg-charcoal px-6 py-4 text-sm font-semibold text-cream transition-colors hover:bg-studio-teal">
+          <Link href="/book" className="inline-flex shrink-0 items-center gap-3 rounded-full bg-charcoal px-6 py-4 text-sm font-semibold text-cream transition-colors hover:bg-caramel-dark">
             Book your free review <ArrowRight size={16} />
           </Link>
         </div>
