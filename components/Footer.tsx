@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-const services = ["Website design & development", "Local SEO foundations", "AI chatbot integration", "Online booking", "CRM & website care"];
+const services = [
+  { label: "Website design & development", href: "/web-design-for-accountants-london" },
+  { label: "Local SEO foundations", href: "/local-seo-foundations" },
+  { label: "AI chatbot integration", href: "/ai-chatbot-integration" },
+  { label: "Online booking", href: "/online-booking" },
+  { label: "CRM & website care", href: "/crm-website-care" },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -31,16 +37,20 @@ export default function Footer() {
             <h3 className="mb-5 font-mono-tech text-[10px] uppercase tracking-[.18em] text-caramel">What we do</h3>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service}><Link href="/web-design-for-accountants-london" className="text-xs text-cream/55 transition-colors hover:text-caramel">{service}</Link></li>
+                <li key={service.href}>
+                  <Link href={service.href} className="text-xs text-cream/55 transition-colors hover:text-caramel">
+                    {service.label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
 
           <div>
             <h3 className="mb-5 font-mono-tech text-[10px] uppercase tracking-[.18em] text-caramel">Explore</h3>
-            <Link href="/our-work" className="block text-xs text-cream/65 transition-colors hover:text-caramel">Our work & concept projects</Link>
+            <Link href="/our-work" className="block text-xs text-cream/65 transition-colors hover:text-caramel">Our work</Link>
             <Link href="/web-design-for-accountants-london" className="mt-3 block text-xs text-cream/65 transition-colors hover:text-caramel">Web design for London accountants</Link>
-            <Link href="/book" className="mt-3 inline-block text-xs text-cream/65 transition-colors hover:text-caramel">Book a free website review</Link>
+            <Link href="/book" className="mt-3 inline-block text-xs text-cream/65 transition-colors hover:text-caramel">Book a free 15-minute review</Link>
             <a href="mailto:info@caramelwebstudios.com" className="mt-3 block break-all text-xs text-cream/65 transition-colors hover:text-caramel">info@caramelwebstudios.com</a>
             <p className="mt-3 text-xs text-cream/40">Barking, London</p>
           </div>
