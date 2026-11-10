@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Mono, Syne } from "next/font/google";
 import "./globals.css";
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-import Cursor from "@/components/Cursor";
-
-
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -41,24 +38,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${dmMono.variable} ${cormorant.variable} ${syne.variable}`}>
-
-        <Cursor />
-         <main>
-          <Navbar />
-         
-            {children}
-          <Footer />
-
-          <Chatbot />
-        </main>
+    <html lang="en" className={`${dmMono.variable} ${cormorant.variable} ${syne.variable}`}>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+        <Chatbot />
       </body>
     </html>
   );
