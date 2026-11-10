@@ -25,7 +25,7 @@ export default function StatsBand() {
             transition={{ duration: .5, delay: index * .08 }}
             className="border-l border-caramel/25 pl-5 sm:pl-7"
           >
-            <p className="font-serif-tech text-4xl font-semibold tracking-tight text-caramel sm:text-5xl">{num}</p>
+            <p className="font-serif-tech text-3xl font-bold tracking-tight text-caramel sm:text-4xl">{num}</p>
             <p className="mt-2 font-mono-tech text-[9px] uppercase leading-5 tracking-[.13em] text-cream/55 sm:text-[10px]">{desc}</p>
           </motion.div>
         ))}
