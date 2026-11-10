@@ -62,12 +62,12 @@ export default function Services() {
         <div className="mb-14 grid gap-8 lg:grid-cols-[1fr_.7fr] lg:items-end">
           <div>
             <p className="eyebrow mb-5">What we bring together</p>
-            <h2 className="max-w-3xl font-serif-tech text-4xl font-bold leading-[1.05] tracking-[-.045em] text-charcoal sm:text-5xl lg:text-7xl">
+            <h2 className="max-w-3xl font-serif-tech text-3xl font-bold leading-[1.12] tracking-[-.04em] text-charcoal sm:text-4xl lg:text-5xl">
               Everything your firm needs.
               <span className="block font-normal italic text-caramel">Nothing it doesn&apos;t.</span>
             </h2>
           </div>
-          <p className="max-w-lg text-sm leading-7 text-charcoal-muted lg:justify-self-end lg:pb-2">
+          <p className="max-w-lg text-[.95rem] leading-7 text-charcoal-muted lg:justify-self-end lg:pb-2">
             Your website should do more than look professional. We connect the
             essential parts of your digital presence into one simple experience
             for you and your clients.
@@ -95,7 +95,7 @@ export default function Services() {
                 </div>
                 <div className="relative mt-9">
                   <p className="mb-3 font-mono-tech text-[9px] uppercase tracking-[.17em] text-studio-teal">{service.tag}</p>
-                  <h3 className="max-w-md font-serif-tech text-2xl font-semibold tracking-tight text-charcoal sm:text-[1.7rem]">{service.title}</h3>
+                  <h3 className="max-w-md font-serif-tech text-xl font-semibold tracking-tight text-charcoal sm:text-2xl">{service.title}</h3>
                   <p className="mt-3 max-w-lg text-sm leading-7 text-charcoal-muted">{service.description}</p>
                 </div>
                 <ul className="relative mt-auto space-y-2.5 pt-7">
