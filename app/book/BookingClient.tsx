@@ -99,7 +99,7 @@ export default function BookingClient() {
               href="https://cal.com/caramelwebstudios/website-consultation"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-caramel-dark underline underline-offset-4 transition-colors hover:text-studio-teal"
+              className="font-semibold text-caramel-dark underline underline-offset-4 transition-colors hover:text-caramel-dark"
             >
               Book directly on Cal.com <ArrowUpRight className="inline" size={13} />
             </a>
