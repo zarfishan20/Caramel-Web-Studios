@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif-tech: "Syne", Georgia, serif;
-  --font-mono-tech: "DM Mono", Courier New, monospace;
-  --font-display: "Cabinet Grotesk", sans-serif;
+  --font-serif-tech: var(--font-syne), Georgia, serif;
+  --font-mono-tech: var(--font-dm-mono), Courier New, monospace;
+  --font-display: var(--font-syne), sans-serif;
   --font-syne: "Syne", sans-serif;
   --font-cormorant: "Cormorant Garamond", Georgia, serif;
 
