@@ -80,17 +80,10 @@ const organizationJsonLd = {
   "@type": "Organization",
   "@id": `${siteUrl}/#organization`,
   name: "Caramel Web Studios",
-  legalName: "Bytesphere Digital Ltd",
   url: siteUrl,
   email: "info@caramelwebstudios.com",
   description:
     "Web design and digital development studio specialising in websites and digital systems for accounting practices in London.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Barking",
-    addressRegion: "London",
-    addressCountry: "GB",
-  },
   areaServed: {
     "@type": "AdministrativeArea",
     name: "London",
