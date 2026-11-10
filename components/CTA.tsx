@@ -32,9 +32,9 @@ export default function CTA() {
             comes across online, discuss what you want to improve and suggest
             practical next steps — with no obligation.
           </p>
-          <Link href="/book" className="group mt-8 inline-flex items-center gap-5 rounded-full bg-charcoal px-6 py-4 text-sm font-semibold text-cream transition-all duration-300 hover:-translate-y-1 hover:bg-studio-teal">
+          <Link href="/book" className="group mt-8 inline-flex items-center gap-5 rounded-full bg-charcoal px-6 py-4 text-sm font-semibold text-cream transition-all duration-300 hover:-translate-y-1 hover:bg-caramel-dark">
             Arrange your free review
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-caramel text-white transition-transform duration-300 group-hover:rotate-45"><ArrowUpRight size={16} /></span>
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-caramel text-white transition-transform group-hover:rotate-45"><ArrowUpRight size={16} /></span>
           </Link>
           <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-white/85">
             <a href="mailto:info@caramelwebstudios.com" className="inline-flex items-center gap-2 transition-colors hover:text-white"><Mail size={14} /> info@caramelwebstudios.com</a>
