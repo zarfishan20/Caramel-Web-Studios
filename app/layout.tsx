@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Mono, Syne } from "next/font/google";
+import { DM_Mono, DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "600"],
-  variable: "--font-cormorant",
-});
 
 const dmMono = DM_Mono({
   subsets: ["latin"],
@@ -17,10 +11,16 @@ const dmMono = DM_Mono({
   variable: "--font-dm-mono",
 });
 
-const syne = Syne({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  variable: "--font-syne",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-plus-jakarta",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmMono.variable} ${cormorant.variable} ${syne.variable}`}>
+    <html lang="en" className={`${dmMono.variable} ${dmSans.variable} ${plusJakarta.variable}`}>
       <body>
         <Navbar />
         {children}
