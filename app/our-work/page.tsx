@@ -2,115 +2,99 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Check, Monitor, Smartphone } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Monitor, Smartphone } from "lucide-react";
 
-const concepts = [
+const projects = [
   {
     number: "01",
-    name: "Northstar Accountancy",
-    type: "Accountancy practice",
-    direction: "Confident, contemporary and approachable",
+    name: "FlexiPay Systems",
+    type: "Accounting website",
+    url: "https://flexipaysystems-accounting-site.vercel.app/",
+    domain: "flexipaysystems-accounting-site.vercel.app",
     summary:
-      "A considered website direction for a growing accountancy practice, with clear service pathways, a calm visual identity and a prominent consultation journey.",
-    features: ["Service-led homepage", "Personal introduction and trust cues", "Consultation booking journey"],
+      "A live website project created for FlexiPay Systems, bringing its accounting-focused online presence into a clear, professional format.",
     palette: "navy",
-    label: "Concept direction · fictional brand",
+    initials: "FP",
   },
   {
     number: "02",
-    name: "Ledger & Lane",
-    type: "Bookkeeping and business support",
-    direction: "Warm, editorial and people-first",
+    name: "Alchemy Associates Ltd",
+    type: "Chartered certified accountants",
+    url: "https://www.alchemyassociates.co.uk/",
+    domain: "alchemyassociates.co.uk",
     summary:
-      "A friendly digital presence for a bookkeeping business, designed to make ongoing support feel understandable and easy to enquire about.",
-    features: ["Plain-English service sections", "Simple enquiry prompts", "Mobile-first page structure"],
+      "A professional website for an established accountancy practice in Chadwell Heath, presenting its accounting, bookkeeping, VAT, payroll and tax services.",
     palette: "sage",
-    label: "Concept direction · fictional brand",
+    initials: "AA",
   },
   {
     number: "03",
-    name: "Oakwell Tax Advisory",
-    type: "Tax advisory practice",
-    direction: "Refined, assured and detail-led",
+    name: "M&M Accounts and Taxation",
+    type: "Accounts and taxation",
+    url: "https://www.mandmaccountsandtaxation.co.uk/",
+    domain: "mandmaccountsandtaxation.co.uk",
     summary:
-      "A more editorial website concept for a specialist tax practice, balancing professional authority with straightforward explanations and clear next steps.",
-    features: ["Focused tax service pages", "Expertise-led content layout", "Clear contact and booking options"],
+      "A live website project for an accounts and taxation practice, designed to give the firm a dedicated online presence for prospective clients.",
     palette: "clay",
-    label: "Concept direction · fictional brand",
+    initials: "M&M",
   },
 ];
 
-function BrowserPreview({ palette }: { palette: "navy" | "sage" | "clay" }) {
+function ProjectVisual({
+  project,
+}: {
+  project: (typeof projects)[number];
+}) {
   const themes = {
     navy: {
-      frame: "bg-[#e9edf1]",
-      bar: "bg-[#17283b]",
-      accent: "bg-[#c58d59]",
-      ink: "bg-[#24364a]",
-      soft: "bg-[#d6dee7]",
-      pale: "bg-[#f7f8fa]",
+      frame: "bg-[#e8edf2]",
+      panel: "bg-[#17283b]",
+      accent: "text-[#c58d59]",
+      mark: "bg-[#c58d59]",
+      surface: "bg-[#f8f9fa]",
     },
     sage: {
-      frame: "bg-[#e9eee8]",
-      bar: "bg-[#314b42]",
-      accent: "bg-[#b88b62]",
-      ink: "bg-[#314b42]",
-      soft: "bg-[#d3dfd3]",
-      pale: "bg-[#f8faf6]",
+      frame: "bg-[#e7eee5]",
+      panel: "bg-[#29473d]",
+      accent: "text-[#8b7656]",
+      mark: "bg-[#8b7656]",
+      surface: "bg-[#fbfaf6]",
     },
     clay: {
       frame: "bg-[#f0e8e1]",
-      bar: "bg-[#3c302b]",
-      accent: "bg-[#b86f4e]",
-      ink: "bg-[#3c302b]",
-      soft: "bg-[#e2d1c4]",
-      pale: "bg-[#fbf8f4]",
+      panel: "bg-[#49372f]",
+      accent: "text-[#b86f4e]",
+      mark: "bg-[#b86f4e]",
+      surface: "bg-[#fbf8f4]",
     },
-  }[palette];
+  }[project.palette];
 
   return (
-    <div className={`relative overflow-hidden rounded-[1.2rem] p-3 shadow-[0_24px_60px_rgba(43,38,33,.12)] sm:p-4 ${themes.frame}`}>
+    <div className={`overflow-hidden rounded-[1.2rem] p-3 shadow-[0_24px_60px_rgba(43,38,33,.10)] sm:p-4 ${themes.frame}`}>
       <div className="mb-3 flex items-center gap-1.5 px-1">
         <span className="h-2 w-2 rounded-full bg-[#df9d92]" />
         <span className="h-2 w-2 rounded-full bg-[#e7c47e]" />
         <span className="h-2 w-2 rounded-full bg-[#91b59b]" />
         <div className="ml-3 h-5 flex-1 rounded-full bg-white/70" />
       </div>
-      <div className={`min-h-[255px] overflow-hidden rounded-lg ${themes.pale}`}>
-        <div className={`flex items-center justify-between px-4 py-3 sm:px-6 ${themes.bar}`}>
-          <div className="h-2.5 w-24 rounded-full bg-white/90" />
-          <div className="hidden gap-3 sm:flex">
-            <span className="h-1.5 w-9 rounded-full bg-white/55" />
-            <span className="h-1.5 w-10 rounded-full bg-white/55" />
-            <span className="h-1.5 w-8 rounded-full bg-white/55" />
-          </div>
-          <span className={`rounded-full px-3 py-1 text-[7px] font-semibold text-white ${themes.accent}`}>GET IN TOUCH</span>
+      <div className={`flex min-h-[255px] flex-col overflow-hidden rounded-lg ${themes.surface}`}>
+        <div className={`flex items-center justify-between px-5 py-4 text-white sm:px-7 ${themes.panel}`}>
+          <span className="font-serif-tech text-sm font-semibold tracking-wide">{project.name}</span>
+          <span className="hidden text-[8px] uppercase tracking-[.16em] text-white/65 sm:inline">Professional services</span>
         </div>
-        <div className="grid gap-4 px-5 py-7 sm:grid-cols-[1.1fr_.9fr] sm:items-center sm:px-8 sm:py-9">
-          <div>
-            <div className={`mb-3 h-1.5 w-16 rounded-full ${themes.accent}`} />
-            <div className={`h-4 w-[90%] rounded-sm ${themes.ink}`} />
-            <div className={`mt-2 h-4 w-[72%] rounded-sm ${themes.ink}`} />
-            <div className={`mt-4 h-2 w-full rounded-full ${themes.soft}`} />
-            <div className={`mt-2 h-2 w-[85%] rounded-full ${themes.soft}`} />
-            <div className={`mt-5 h-7 w-24 rounded-full ${themes.accent}`} />
+        <div className="flex flex-1 flex-col justify-center px-6 py-8 sm:px-9">
+          <span className={`mb-3 text-[9px] font-semibold uppercase tracking-[.2em] ${themes.accent}`}>Website design & development</span>
+          <div className="max-w-[85%] font-serif-tech text-2xl font-semibold leading-tight text-[#2b2621] sm:text-3xl">
+            A clearer online presence for your business.
           </div>
-          <div className={`relative hidden aspect-[4/3] overflow-hidden rounded-md sm:block ${themes.soft}`}>
-            <div className={`absolute bottom-0 left-0 h-[72%] w-[72%] rounded-tr-[4rem] ${themes.bar} opacity-90`} />
-            <div className={`absolute right-4 top-4 h-12 w-12 rounded-full ${themes.accent} opacity-90`} />
-            <div className="absolute bottom-4 right-4 h-16 w-12 rounded-t-full bg-white/70" />
+          <div className={`mt-5 h-1.5 w-16 rounded-full ${themes.mark}`} />
+          <div className="mt-6 flex gap-2">
+            <span className={`rounded-full px-4 py-2 text-[8px] font-semibold text-white ${themes.panel}`}>Explore services</span>
+            <span className="rounded-full border border-[#2b2621]/15 px-4 py-2 text-[8px] font-semibold text-[#2b2621]">Get in touch</span>
           </div>
-        </div>
-        <div className="grid grid-cols-3 gap-2 px-5 pb-5 sm:px-8">
-          {[0, 1, 2].map((item) => (
-            <div key={item} className={`rounded-md p-3 ${themes.soft}`}>
-              <div className={`mb-2 h-2 w-6 rounded-full ${themes.accent}`} />
-              <div className={`h-1.5 w-full rounded-full ${themes.ink} opacity-60`} />
-              <div className={`mt-1.5 h-1.5 w-2/3 rounded-full ${themes.ink} opacity-30`} />
-            </div>
-          ))}
         </div>
       </div>
+      <p className="mt-2 text-center text-[9px] text-[#2b2621]/55">Project showcase preview</p>
     </div>
   );
 }
@@ -130,20 +114,20 @@ export default function OurWorkPage() {
             transition={{ duration: .65 }}
           >
             <p className="mb-6 inline-flex rounded-full border border-caramel/30 bg-caramel/10 px-4 py-2 font-mono-tech text-[10px] uppercase tracking-[.16em] text-caramel">
-              Selected concepts · Digital experiences
+              Selected client work · Live websites
             </p>
             <h1 className="max-w-4xl font-serif-tech text-4xl font-bold leading-[1.08] tracking-[-.045em] sm:text-5xl lg:text-7xl">
-              Thoughtful websites.
-              <span className="block font-normal italic text-caramel">Made for professional services.</span>
+              Real projects.
+              <span className="block font-normal italic text-caramel">Built for professional services.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-8 text-cream/70 sm:text-lg">
-              Explore a few directions for how an accountancy or advisory website
-              could look and work. These concept projects show our approach to
-              layout, visual identity and the client journey.
+              A selection of websites created for accounting and taxation
+              businesses. Each project gives a firm its own professional online
+              presence and a clear way for visitors to learn more.
             </p>
             <div className="mt-9 flex flex-wrap gap-3 text-xs text-cream/65">
-              <span className="inline-flex items-center gap-2"><Monitor size={14} className="text-caramel" /> Responsive website concepts</span>
-              <span className="inline-flex items-center gap-2"><Smartphone size={14} className="text-caramel" /> Mobile-first thinking</span>
+              <span className="inline-flex items-center gap-2"><Monitor size={14} className="text-caramel" /> Website design & development</span>
+              <span className="inline-flex items-center gap-2"><Smartphone size={14} className="text-caramel" /> Responsive experiences</span>
             </div>
           </motion.div>
         </div>
@@ -153,17 +137,17 @@ export default function OurWorkPage() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 flex flex-col gap-5 border-b border-charcoal/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="eyebrow mb-4">The concept collection</p>
-              <h2 className="font-serif-tech text-3xl font-bold tracking-tight sm:text-4xl">Three possible directions.</h2>
+              <p className="eyebrow mb-4">Our portfolio</p>
+              <h2 className="font-serif-tech text-3xl font-bold tracking-tight sm:text-4xl">Websites we&apos;ve built.</h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-charcoal-muted">
-              Each concept is a starting point, not a template. A real project is
-              shaped around the firm, its services and the people it wants to reach.
+              Take a look at the live websites. Each business has its own
+              services, audience and identity, so every project has its own direction.
             </p>
           </div>
 
           <div className="space-y-8">
-            {concepts.map((project, index) => (
+            {projects.map((project, index) => (
               <motion.article
                 key={project.number}
                 initial={reduceMotion ? false : { opacity: 0, y: 28 }}
@@ -172,48 +156,30 @@ export default function OurWorkPage() {
                 transition={{ duration: .6, delay: index * .08 }}
                 className="grid gap-7 overflow-hidden rounded-[1.7rem] border border-caramel/15 bg-white p-5 shadow-[0_18px_55px_rgba(43,38,33,.045)] sm:p-7 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:gap-10 lg:p-9"
               >
-                <BrowserPreview palette={project.palette as "navy" | "sage" | "clay"} />
+                <ProjectVisual project={project} />
                 <div className="py-1 lg:py-4">
                   <div className="mb-5 flex flex-wrap items-center gap-2">
                     <span className="font-mono-tech text-[10px] tracking-[.15em] text-caramel">{project.number} / 03</span>
                     <span className="rounded-full border border-caramel/25 bg-caramel-light px-3 py-1 text-[9px] font-semibold uppercase tracking-[.1em] text-caramel-dark">
-                      {project.label}
+                      Live website
                     </span>
                   </div>
                   <p className="text-xs font-medium text-charcoal-muted">{project.type}</p>
                   <h3 className="mt-2 font-serif-tech text-2xl font-bold tracking-tight sm:text-3xl">{project.name}</h3>
-                  <p className="mt-3 text-sm font-semibold text-caramel-dark">{project.direction}</p>
                   <p className="mt-4 text-sm leading-7 text-charcoal-muted">{project.summary}</p>
-                  <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-                    {project.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-xs leading-5 text-charcoal/75">
-                        <Check size={14} className="mt-0.5 shrink-0 text-caramel-dark" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="mt-4 break-all text-xs text-charcoal-muted/75">{project.domain}</p>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-7 inline-flex items-center gap-2 rounded-full bg-charcoal px-5 py-3 text-xs font-semibold text-cream transition-all duration-300 hover:-translate-y-0.5 hover:bg-caramel-dark"
+                  >
+                    Visit live website <ExternalLink size={14} className="transition-transform group-hover:translate-x-0.5" />
+                  </a>
                 </div>
               </motion.article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-[#f4eee6] px-6 py-16 sm:px-10 lg:px-16 lg:py-20">
-        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
-          <div>
-            <p className="eyebrow mb-4">A note about these examples</p>
-            <h2 className="max-w-2xl font-serif-tech text-3xl font-bold tracking-tight sm:text-4xl">
-              Concept work, shown honestly.
-            </h2>
-          </div>
-          <p className="text-sm leading-7 text-charcoal-muted">
-            The names and website previews on this page are fictional sample
-            concepts created to demonstrate possible design directions. They are
-            not real client websites, testimonials, partnerships or measured
-            business results. This page can be updated as completed client work
-            becomes available.
-          </p>
         </div>
       </section>
 
@@ -222,14 +188,14 @@ export default function OurWorkPage() {
           <div>
             <p className="mb-3 font-mono-tech text-[10px] uppercase tracking-[.18em] text-white/75">Your practice, your direction</p>
             <h2 className="max-w-2xl font-serif-tech text-3xl font-bold tracking-tight sm:text-4xl">
-              Have a website project in mind?
+              Ready for a website that works for your firm?
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-7 text-white/85">
-              Let&apos;s talk about the right structure and design for your firm.
+              Let&apos;s talk about the right structure and design for your business.
             </p>
           </div>
           <Link href="/book" className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-charcoal px-6 py-4 text-sm font-semibold text-cream transition-all duration-300 hover:-translate-y-1 hover:bg-caramel-dark">
-            Discuss your project <ArrowUpRight size={16} />
+            Book a 15-minute review <ArrowUpRight size={16} />
           </Link>
         </div>
       </section>
