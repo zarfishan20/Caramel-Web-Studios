@@ -126,7 +126,7 @@ export default function Services() {
             <h3 className="font-serif-tech text-xl font-semibold text-charcoal">Not sure what your firm needs?</h3>
             <p className="mt-1 text-sm leading-6 text-charcoal-muted">We can review your current website and talk through practical improvements.</p>
           </div>
-          <Link href="/book" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-cream transition-colors hover:bg-studio-teal">
+          <Link href="/book" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-charcoal px-5 py-3 text-sm font-semibold text-cream transition-colors hover:bg-caramel-dark">
             Arrange a free review <ArrowUpRight size={15} />
           </Link>
         </div>
