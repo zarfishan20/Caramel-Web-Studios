@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-const services = ["Web Development", "AI Chatbot", "Booking Integration", "CRM Integration", "Web Care"];
-const company = ["About Us", "Blog", "FAQs", "Contact"];
+const services = ["Website design & development", "Local SEO foundations", "AI chatbot integration", "Online booking", "CRM & website care"];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,7 +12,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-charcoal px-6 pb-8 pt-16 text-cream sm:px-10 lg:px-16 lg:pt-20">
       <div aria-hidden className="absolute -right-28 -top-36 h-96 w-96 rounded-full border border-caramel/10" />
       <div className="relative mx-auto max-w-[1440px]">
-        <div className="grid gap-12 border-b border-white/10 pb-14 md:grid-cols-2 lg:grid-cols-[1.4fr_.8fr_.8fr_.8fr]">
+        <div className="grid gap-12 border-b border-white/10 pb-14 md:grid-cols-2 lg:grid-cols-[1.4fr_.8fr_.8fr]">
           <div>
             <Link href="/" className="inline-flex flex-col leading-[.95]">
               <span className="font-syne text-lg font-extrabold uppercase tracking-[.12em]">Caramel <span className="text-caramel">Web</span></span>
@@ -21,7 +20,7 @@ export default function Footer() {
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-7 text-cream/55">
               Specialist websites and thoughtful digital systems for accounting
-              firms. Built to make every client interaction feel effortless.
+              firms across London. Built to make every client interaction feel effortless.
             </p>
             <Link href="/book" className="mt-6 inline-flex items-center gap-2 text-xs font-semibold text-caramel transition-colors hover:text-cream">
               Start a conversation <ArrowUpRight size={14} />
@@ -29,27 +28,19 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-5 font-mono-tech text-[10px] uppercase tracking-[.18em] text-caramel">Services</h3>
+            <h3 className="mb-5 font-mono-tech text-[10px] uppercase tracking-[.18em] text-caramel">What we do</h3>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service}><Link href="/#services" className="text-xs text-cream/55 transition-colors hover:text-caramel">{service}</Link></li>
+                <li key={service}><Link href="/web-design-for-accountants-london" className="text-xs text-cream/55 transition-colors hover:text-caramel">{service}</Link></li>
               ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-5 font-mono-tech text-[10px] uppercase tracking-[.18em] text-caramel">Studio</h3>
-            <ul className="space-y-3">
-              {company.map((item) => (
-                <li key={item}><Link href={`/${item.toLowerCase().replace(/\s+/g, "-")}`} className="text-xs text-cream/55 transition-colors hover:text-caramel">{item}</Link></li>
-              ))}
-              <li><Link href="/portfolio" className="text-xs text-cream/55 transition-colors hover:text-caramel">Selected work</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="mb-5 font-mono-tech text-[10px] uppercase tracking-[.18em] text-caramel">Get in touch</h3>
-            <a href="mailto:info@caramelwebstudios.com" className="break-all text-xs text-cream/65 transition-colors hover:text-caramel">info@caramelwebstudios.com</a>
+            <Link href="/web-design-for-accountants-london" className="block text-xs text-cream/65 transition-colors hover:text-caramel">Web design for London accountants</Link>
+            <Link href="/book" className="mt-3 inline-block text-xs text-cream/65 transition-colors hover:text-caramel">Book a free website review</Link>
+            <a href="mailto:info@caramelwebstudios.com" className="mt-3 block break-all text-xs text-cream/65 transition-colors hover:text-caramel">info@caramelwebstudios.com</a>
             <p className="mt-3 text-xs text-cream/40">Barking, London</p>
           </div>
         </div>
@@ -59,11 +50,7 @@ export default function Footer() {
             <p>© 2023–{currentYear} Caramel Web Studios. All rights reserved.</p>
             <p>Caramel Web Studios is a trading name of Bytesphere Digital Ltd. Registered in England and Wales · Company No. 16844459</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 tracking-wide sm:justify-end">
-            <Link href="/sitemap" className="transition-colors hover:text-caramel">Sitemap</Link>
-            <Link href="/privacy" className="transition-colors hover:text-caramel">Privacy</Link>
-            <Link href="/terms" className="transition-colors hover:text-caramel">Terms</Link>
-          </div>
+          <Link href="/" className="text-center transition-colors hover:text-caramel">Home</Link>
         </div>
       </div>
     </footer>
