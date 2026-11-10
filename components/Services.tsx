@@ -1,96 +1,115 @@
 "use client";
 
-import { 
-  Palette, 
-  MessageSquareCode, 
-  CalendarCheck, 
-  RefreshCw, 
-  ShieldCheck, 
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  ArrowUpRight,
+  CalendarCheck,
+  Code2,
+  MessageSquareText,
+  RefreshCw,
+  ShieldCheck,
 } from "lucide-react";
-
 
 const services = [
   {
-  icon: <Palette className="w-5 h-5" />,
-    title: "Web Design & Development",
-    desc: "Custom, conversion-focused websites built specifically for accounting firms. Professional, trustworthy, and fast.",
-    features: ["Bespoke design — no templates","Fully mobile responsive","SEO-optimised from day one","GDPR compliant"],
-    tags: ["Design","Dev","SEO"],
+    number: "01",
+    icon: Code2,
+    title: "Web design & development",
+    description: "A confident first impression, built around the way your firm works. Bespoke, responsive websites that turn visits into enquiries.",
+    features: ["Bespoke design, never off-the-shelf", "Mobile-first and SEO-ready", "Clear, conversion-led journeys"],
+    tag: "Your digital foundation",
   },
   {
-   icon: <MessageSquareCode className="w-5 h-5" />,
-    title: "AI Chatbot & Hosting",
-    desc: "An intelligent chatbot trained on your firm's services — answers client questions, qualifies leads, and books meetings 24/7.",
-    features: ["Trained on your services & FAQs","Captures leads automatically","Hands off to your team seamlessly","Hosted and maintained by us"],
-    tags: ["AI","Lead gen","24/7"],
+    number: "02",
+    icon: MessageSquareText,
+    title: "AI chatbot",
+    description: "Give prospective clients useful answers around the clock. Your chatbot handles common questions and helps qualify new enquiries.",
+    features: ["Trained around your services", "Captures and qualifies leads", "A clear handover to your team"],
+    tag: "Always-on assistance",
   },
   {
-   icon: <CalendarCheck className="w-5 h-5" />,
-    title: "Booking Integration",
-    desc: "Let clients book consultations directly from your website — synced with your calendar, zero back-and-forth emails.",
-    features: ["Calendar sync (Google, Outlook)","Automated confirmations & reminders","Branded booking pages","Custom intake forms"],
-    tags: ["Scheduling","Automation"],
+    number: "03",
+    icon: CalendarCheck,
+    title: "Booking integration",
+    description: "Make it easy for the right clients to take the next step with online consultations that fit your team's calendar.",
+    features: ["Calendar synchronisation", "Automatic confirmations", "Branded booking experience"],
+    tag: "Fewer email exchanges",
   },
   {
-   icon: <RefreshCw className="w-5 h-5" />,
-    title: "CRM Integration",
-    desc: "Connect your website, chatbot, and bookings to your CRM — every enquiry and new client captured automatically.",
-    features: ["Works with popular accounting CRMs","Auto-create contacts from enquiries","Pipeline and deal tracking","Custom field mapping"],
-    tags: ["CRM","Automation","Data"],
+    number: "04",
+    icon: RefreshCw,
+    title: "CRM integration",
+    description: "Connect your website, chatbot and bookings so new enquiries reach the right place without repetitive admin.",
+    features: ["Automatic contact capture", "Connected enquiry workflows", "Custom field mapping"],
+    tag: "A joined-up workflow",
   },
   {
-   icon: <ShieldCheck className="w-5 h-5" />,
-    title: "Web Care",
-    desc: "Ongoing maintenance and support so your website is always fast, secure, and up to date — hands-free for you.",
-    features: ["Security monitoring","Daily backups","Plugin & software updates","Priority technical support"],
-    tags: ["Maintenance","Security","Support"],
+    number: "05",
+    icon: ShieldCheck,
+    title: "Web care & hosting",
+    description: "Keep your online presence secure, supported and running smoothly, while you focus on looking after clients.",
+    features: ["Updates and security checks", "Backups and monitoring", "Ongoing technical support"],
+    tag: "Peace of mind",
   },
 ];
 
 export default function Services() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section id="services" className="px-8 lg:px-12 py-24">
-      <p className="text-xs font-medium tracking-widest uppercase mb-3" style={{ color: "var(--color-caramel)" }}>Our services</p>
-      <h2 className="text-4xl font-bold tracking-tight mb-12 max-w-lg leading-snug" style={{ fontFamily: "var(--font-serif)", color: "var(--color-ink)" }}>
-        Everything your firm needs online
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {services.map((svc) => (
-          <div
-            key={svc.title}
-            className="rounded-2xl p-7 transition-all duration-200 cursor-default"
-            style={{
-              backgroundColor: "var(--color-caramel-off)",
-              border: "1px solid color-mix(in srgb, var(--color-caramel) 15%, transparent)",
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)";
-              (e.currentTarget as HTMLDivElement).style.borderColor = "color-mix(in srgb, var(--color-caramel) 40%, transparent)";
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-              (e.currentTarget as HTMLDivElement).style.borderColor = "color-mix(in srgb, var(--color-caramel) 15%, transparent)";
-            }}
-          >
-            <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-5" style={{ backgroundColor: "var(--color-caramel-light)" }}>
-              {svc.icon}
-            </div>
-            <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "var(--font-serif)", color: "var(--color-ink)" }}>{svc.title}</h3>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--color-ink-muted)" }}>{svc.desc}</p>
-            <ul className="space-y-1.5 mb-4">
-              {svc.features.map((f) => (
-                <li key={f} className="text-xs pl-4 relative" style={{ color: "var(--color-ink-muted)" }}>
-                  <span className="absolute left-0 font-bold" style={{ color: "var(--color-caramel)" }}>✓</span>{f}
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-wrap gap-1.5">
-              {svc.tags.map((t) => (
-                <span key={t} className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ backgroundColor: "var(--color-caramel-light)", color: "var(--color-caramel-dark)" }}>{t}</span>
-              ))}
-            </div>
+    <section id="services" className="bg-cream px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="mb-14 grid gap-8 lg:grid-cols-[1fr_.7fr] lg:items-end">
+          <div>
+            <p className="eyebrow mb-5">What we bring together</p>
+            <h2 className="max-w-3xl font-serif-tech text-4xl font-bold leading-[1.05] tracking-[-.045em] text-charcoal sm:text-5xl lg:text-7xl">
+              Everything your firm needs.
+              <span className="block font-normal italic text-caramel">Nothing it doesn&apos;t.</span>
+            </h2>
           </div>
-        ))}
+          <p className="max-w-lg text-sm leading-7 text-charcoal-muted lg:justify-self-end lg:pb-2">
+            Your website should do more than look professional. We connect the
+            essential parts of your digital presence into one simple experience
+            for you and your clients.
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <motion.article
+                key={service.number}
+                initial={reduceMotion ? false : { opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: .18 }}
+                transition={{ duration: .6, delay: index * .07, ease: [.2,.8,.2,1] }}
+                className={`service-card group relative flex min-h-[370px] flex-col overflow-hidden rounded-[1.6rem] border border-caramel/15 bg-white/65 p-7 sm:p-8 ${index === 0 ? "xl:col-span-2 xl:min-h-[410px] xl:p-10" : ""}`}
+              >
+                <div className="absolute -right-12 -top-14 h-44 w-44 rounded-full bg-caramel/[.07] blur-2xl transition-transform duration-700 group-hover:scale-150" />
+                <div className="relative flex items-start justify-between">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-caramel-light text-caramel-dark transition-all duration-300 group-hover:bg-charcoal group-hover:text-caramel">
+                    <Icon size={21} strokeWidth={1.6} />
+                  </div>
+                  <span className="font-mono-tech text-[10px] tracking-widest text-caramel">{service.number}</span>
+                </div>
+                <div className="relative mt-9">
+                  <p className="mb-3 font-mono-tech text-[9px] uppercase tracking-[.17em] text-studio-teal">{service.tag}</p>
+                  <h3 className="max-w-md font-serif-tech text-2xl font-semibold tracking-tight text-charcoal sm:text-[1.7rem]">{service.title}</h3>
+                  <p className="mt-3 max-w-lg text-sm leading-7 text-charcoal-muted">{service.description}</p>
+                </div>
+                <ul className="relative mt-auto space-y-2.5 pt-7">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2.5 text-xs text-charcoal/75">
+                      <span className="h-1.5 w-1.5 rounded-full bg-caramel" /> {feature}
+                    </li>
+                  ))}
+                </ul>
+                <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-caramel transition-all duration-700 group-hover:w-full" />
+              </motion.article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
