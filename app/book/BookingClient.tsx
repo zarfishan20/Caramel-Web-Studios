@@ -19,7 +19,7 @@ const perks: Perk[] = [
 ];
 
 const faqs = [
-  { q: "Is the website review free?", a: "Yes. The 30-minute review is free and there is no obligation to work with us afterwards." },
+  { q: "Is the website review free?", a: "Yes. The 15-minute review is free and there is no obligation to work with us afterwards." },
   { q: "What should I prepare?", a: "Just bring your current website address, if you have one, and a sense of the clients or services you would like to focus on." },
   { q: "Do you only work with London firms?", a: "Our focus is accounting practices in London. If your firm is elsewhere in the UK, you are still welcome to get in touch." },
   { q: "What happens after the call?", a: "We will talk through the main opportunities and possible next steps. If you would like a website project proposal, we can discuss the scope and provide one for you to consider." },
@@ -48,7 +48,7 @@ export default function BookingClient() {
         <div className="relative mx-auto max-w-4xl text-center">
           <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-caramel/30 bg-caramel/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[.16em] text-caramel">
             <span className="h-2 w-2 rounded-full bg-studio-teal" />
-            Free · No obligation · 30 minutes
+            Free · No obligation · 15 minutes
           </p>
           <h1 className="font-serif-tech text-4xl font-bold leading-[1.08] tracking-[-.045em] sm:text-5xl lg:text-6xl">
             Let&apos;s take a closer look at
