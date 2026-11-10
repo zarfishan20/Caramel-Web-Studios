@@ -1,45 +1,64 @@
 "use client";
 
-
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 const steps = [
-  { title: "Discovery call", desc: "We learn about your firm, your clients, and your goals. 30 minutes, no obligation." },
-  { title: "Design & build", desc: "We design and develop your site, chatbot, booking system, and CRM connections." },
-  { title: "Review & refine", desc: "You review, we refine. Two rounds of revisions included as standard." },
-  { title: "Go live", desc: "We launch your site and handle everything ongoing through Web Care." },
+  { title: "Discover", desc: "A relaxed conversation about your firm, the clients you want to reach and what needs to work better." },
+  { title: "Design & build", desc: "We shape your website and connect the tools that make enquiries, bookings and follow-up simpler." },
+  { title: "Review & refine", desc: "You see the work taking shape, share feedback and we refine the details together." },
+  { title: "Launch & support", desc: "We take your new experience live and can look after the updates and support beyond launch." },
 ];
 
 export default function HowItWorks() {
+  const reduceMotion = useReducedMotion();
+
   return (
-<section id="how-it-works" className="px-8 lg:px-12 py-24 bg-charcoal">
-<p className="text-xs font-medium tracking-widest uppercase mb-3 text-caramel/70 font-mono-tech">
-  How it works
-</p>
+    <section id="how-it-works" className="relative overflow-hidden bg-charcoal px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+      <div aria-hidden className="absolute -right-40 top-0 h-[34rem] w-[34rem] rounded-full border border-caramel/10" />
+      <div aria-hidden className="absolute -right-24 top-16 h-[26rem] w-[26rem] rounded-full border border-caramel/10" />
+      <div className="relative mx-auto max-w-[1440px]">
+        <div className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="eyebrow mb-5 !text-caramel">A clear, considered process</p>
+            <h2 className="max-w-2xl font-serif-tech text-4xl font-bold leading-[1.05] tracking-[-.045em] text-cream sm:text-5xl lg:text-7xl">
+              Good work.
+              <span className="block font-normal italic text-caramel">Without the guesswork.</span>
+            </h2>
+          </div>
+          <p className="max-w-md text-sm leading-7 text-cream/55">
+            From the first conversation to launch day, you know what is happening,
+            what comes next and who is looking after the details.
+          </p>
+        </div>
 
-<h2 className="text-4xl font-bold tracking-tight mb-14 max-w-lg leading-snug font-serif-tech text-caramel-light">
-  From first call to live site in 14 days
-</h2>
+        <div className="relative grid gap-10 md:grid-cols-2 xl:grid-cols-4 xl:gap-7">
+          <div aria-hidden className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-caramel/50 via-caramel/20 to-transparent xl:block" />
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.title}
+              initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: .3 }}
+              transition={{ duration: .55, delay: index * .1 }}
+              className="relative"
+            >
+              <div className="relative z-10 mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-caramel/40 bg-charcoal font-mono-tech text-xs text-caramel shadow-[0_0_0_8px_rgba(43,38,33,1)]">
+                0{index + 1}
+              </div>
+              <h3 className="font-serif-tech text-2xl font-semibold text-cream">{step.title}</h3>
+              <p className="mt-3 max-w-xs text-sm leading-7 text-cream/50">{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
 
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-  {steps.map((step, i) => (
-    <div key={step.title}>
-      {/* Step Numbers (01, 02, etc.) using Syne with a soft 20% Caramel tint */}
-      <p className="text-5xl font-black leading-none mb-3 font-serif-tech text-caramel/20">
-        {String(i + 1).padStart(2, "0")}
-      </p>
-      
-      {/* Step Title */}
-      <h3 className="text-base font-medium mb-2 text-caramel-light font-display">
-        {step.title}
-      </h3>
-      
-      {/* Step Description with 45% opacity Cream variant */}
-      <p className="text-sm leading-relaxed text-caramel-light/45 font-mono-tech">
-        {step.desc}
-      </p>
-    </div>
-  ))}
-</div>
+        <div className="mt-16 border-t border-white/10 pt-8">
+          <a href="/book" className="group inline-flex items-center gap-3 text-sm font-semibold text-caramel transition-colors hover:text-cream">
+            Let&apos;s talk about your project
+            <span className="grid h-8 w-8 place-items-center rounded-full border border-caramel/40 transition-all group-hover:rotate-45 group-hover:bg-caramel group-hover:text-charcoal"><ArrowUpRight size={15} /></span>
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
