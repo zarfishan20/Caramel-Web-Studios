@@ -32,7 +32,7 @@ export default function Navbar() {
             <span className="mt-1 font-cormorant text-[11px] font-semibold tracking-[.16em] text-caramel">Studios</span>
           </Link>
 
-          <div className="hidden items-center gap-5 2xl:flex">
+          <div className="hidden items-center gap-5 xl:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -50,7 +50,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-charcoal/10 text-charcoal transition-colors hover:bg-caramel/10 2xl:hidden"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-charcoal/10 text-charcoal transition-colors hover:bg-caramel/10 xl:hidden"
             onClick={() => setMobileOpen((open) => !open)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -64,7 +64,7 @@ export default function Navbar() {
       <div
         id="mobile-navigation"
         aria-hidden={!mobileOpen}
-        className={`fixed inset-0 z-40 bg-cream px-8 pb-12 pt-28 transition-all duration-300 2xl:hidden ${mobileOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"}`}
+        className={`fixed inset-0 z-40 bg-cream px-8 pb-12 pt-28 transition-all duration-300 xl:hidden ${mobileOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"}`}
       >
         <div className="mx-auto flex h-full max-w-xl flex-col">
           <p className="eyebrow mb-7">Navigate the studio</p>
