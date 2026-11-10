@@ -21,12 +21,12 @@ export default function HowItWorks() {
         <div className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="eyebrow mb-5 !text-caramel">A clear, considered process</p>
-            <h2 className="max-w-2xl font-serif-tech text-4xl font-bold leading-[1.05] tracking-[-.045em] text-cream sm:text-5xl lg:text-7xl">
+            <h2 className="max-w-2xl font-serif-tech text-3xl font-bold leading-[1.12] tracking-[-.04em] text-cream sm:text-4xl lg:text-5xl">
               Good work.
               <span className="block font-normal italic text-caramel">Without the guesswork.</span>
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-7 text-cream/55">
+          <p className="max-w-md text-[.95rem] leading-7 text-cream/65">
             From the first conversation to launch day, you know what is happening,
             what comes next and who is looking after the details.
           </p>
@@ -46,8 +46,8 @@ export default function HowItWorks() {
               <div className="relative z-10 mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-caramel/40 bg-charcoal font-mono-tech text-xs text-caramel shadow-[0_0_0_8px_rgba(43,38,33,1)]">
                 0{index + 1}
               </div>
-              <h3 className="font-serif-tech text-2xl font-semibold text-cream">{step.title}</h3>
-              <p className="mt-3 max-w-xs text-sm leading-7 text-cream/50">{step.desc}</p>
+              <h3 className="font-serif-tech text-xl font-semibold text-cream">{step.title}</h3>
+              <p className="mt-3 max-w-xs text-[.95rem] leading-7 text-cream/60">{step.desc}</p>
             </motion.div>
           ))}
         </div>
