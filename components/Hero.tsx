@@ -39,7 +39,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link href="/book" className="group inline-flex items-center justify-center gap-4 rounded-full bg-charcoal px-7 py-4 text-sm font-semibold text-cream shadow-xl shadow-charcoal/10 transition-all duration-300 hover:-translate-y-1 hover:bg-studio-teal">
+            <Link href="/book" className="group inline-flex items-center justify-center gap-4 rounded-full bg-charcoal px-7 py-4 text-sm font-semibold text-cream shadow-xl shadow-charcoal/10 transition-all duration-300 hover:-translate-y-1 hover:bg-caramel-dark">
               Get a free website review
               <span className="grid h-7 w-7 place-items-center rounded-full bg-caramel text-white transition-transform duration-300 group-hover:rotate-45">
                 <ArrowUpRight size={15} />
