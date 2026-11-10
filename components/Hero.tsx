@@ -29,7 +29,7 @@ export default function Hero() {
             London digital studio · Built for accountants
           </div>
 
-          <h1 className="max-w-[760px] text-balance font-serif-tech text-[clamp(3.5rem,7.4vw,7.25rem)] font-extrabold leading-[.98] tracking-[-.065em] text-charcoal">
+          <h1 className="max-w-[760px] text-balance font-serif-tech text-[clamp(3rem,5.8vw,5.5rem)] font-bold leading-[1.02] tracking-[-.055em] text-charcoal">
             Make your firm
             <span className="relative mt-1 block italic font-normal tracking-[-.055em] text-caramel">
               impossible
@@ -38,7 +38,7 @@ export default function Hero() {
             to overlook.
           </h1>
 
-          <p className="mt-8 max-w-xl text-base leading-8 text-charcoal-muted sm:text-lg">
+          <p className="mt-7 max-w-xl text-[1.05rem] leading-[1.8] text-charcoal-muted sm:text-lg">
             A sharper website. Smarter client journeys. Less admin. We bring your
             accounting firm&apos;s website, bookings and enquiries together in one
             considered digital experience.
