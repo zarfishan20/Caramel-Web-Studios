@@ -37,8 +37,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-5 font-mono-tech text-[10px] uppercase tracking-[.18em] text-caramel">Get in touch</h3>
-            <Link href="/web-design-for-accountants-london" className="block text-xs text-cream/65 transition-colors hover:text-caramel">Web design for London accountants</Link>
+            <h3 className="mb-5 font-mono-tech text-[10px] uppercase tracking-[.18em] text-caramel">Explore</h3>
+            <Link href="/our-work" className="block text-xs text-cream/65 transition-colors hover:text-caramel">Our work & concept projects</Link>
+            <Link href="/web-design-for-accountants-london" className="mt-3 block text-xs text-cream/65 transition-colors hover:text-caramel">Web design for London accountants</Link>
             <Link href="/book" className="mt-3 inline-block text-xs text-cream/65 transition-colors hover:text-caramel">Book a free website review</Link>
             <a href="mailto:info@caramelwebstudios.com" className="mt-3 block break-all text-xs text-cream/65 transition-colors hover:text-caramel">info@caramelwebstudios.com</a>
             <p className="mt-3 text-xs text-cream/40">Barking, London</p>
