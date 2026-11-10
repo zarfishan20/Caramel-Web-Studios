@@ -25,7 +25,7 @@ export default function Navbar() {
     { name: "Services", href: "/#services" },
     { name: "Who we help", href: "/#who-we-help" },
     { name: "Our approach", href: "/#approach" },
-    { name: "Selected work", href: "/portfolio" },
+    { name: "Accountant web design", href: "/web-design-for-accountants-london" },
   ];
 
   return (
@@ -39,7 +39,7 @@ export default function Navbar() {
             <span className="mt-1 font-cormorant text-[11px] font-semibold tracking-[.16em] text-caramel">Studios</span>
           </Link>
 
-          <div className="hidden items-center gap-9 lg:flex">
+          <div className="hidden items-center gap-7 xl:flex">
             {navLinks.map((link) => (
               <Link key={link.name} href={link.href} className="nav-link">{link.name}</Link>
             ))}
@@ -50,7 +50,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-full border border-charcoal/10 text-charcoal transition-colors hover:bg-caramel/10 lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-charcoal/10 text-charcoal transition-colors hover:bg-caramel/10 xl:hidden"
             onClick={() => setMobileOpen((open) => !open)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -60,7 +60,7 @@ export default function Navbar() {
         </nav>
       </header>
 
-      <div className={`fixed inset-0 z-40 bg-cream px-8 pb-12 pt-32 transition-all duration-500 lg:hidden ${mobileOpen ? "translate-y-0 opacity-100" : "-translate-y-3 pointer-events-none opacity-0"}`}>
+      <div className={`fixed inset-0 z-40 bg-cream px-8 pb-12 pt-32 transition-all duration-500 xl:hidden ${mobileOpen ? "translate-y-0 opacity-100" : "-translate-y-3 pointer-events-none opacity-0"}`}>
         <div className="mx-auto flex h-full max-w-xl flex-col">
           <p className="eyebrow mb-8">Navigate the studio</p>
           <div className="flex flex-col gap-5">
