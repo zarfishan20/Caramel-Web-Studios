@@ -23,24 +23,98 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 });
 
+const siteUrl = "https://caramelwebstudios.com";
+
 export const metadata: Metadata = {
-  title: "Caramel Web Studios | Websites for London Accountants",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Web Design for Accountants in London | Caramel Web Studios",
+    template: "%s | Caramel Web Studios",
+  },
   description:
-    "We design, build, and maintain professional websites exclusively for accounting firms in London — with AI chatbots, online booking, and CRM integration.",
-  keywords: "web design accountants London, accounting website, CRM integration, AI chatbot accountants",
+    "Caramel Web Studios designs and develops professional websites for London accounting firms, with local SEO foundations, online booking, AI chatbots and ongoing website care.",
+  applicationName: "Caramel Web Studios",
+  keywords: [
+    "web design for accountants London",
+    "accountant website design",
+    "accounting firm web development",
+    "website designer for accountants",
+    "London accountancy website",
+    "local SEO for accountants",
+    "AI chatbot for accountants",
+    "accountant booking integration",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Caramel Web Studios | Websites for London Accountants",
-    description: "Professional websites built exclusively for London accounting firms.",
-    url: "https://caramelwebstudios.com",
+    title: "Web Design for Accountants in London | Caramel Web Studios",
+    description:
+      "Professional, enquiry-focused websites for London accountants, tax advisers and bookkeeping firms.",
+    url: siteUrl,
     siteName: "Caramel Web Studios",
     locale: "en_GB",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Web Design for Accountants in London | Caramel Web Studios",
+    description:
+      "Professional, enquiry-focused websites for London accounting practices.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+  name: "Caramel Web Studios",
+  legalName: "Bytesphere Digital Ltd",
+  url: siteUrl,
+  email: "info@caramelwebstudios.com",
+  description:
+    "Web design and digital development studio specialising in websites and digital systems for accounting practices in London.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Barking",
+    addressRegion: "London",
+    addressCountry: "GB",
+  },
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "London",
+  },
+  knowsAbout: [
+    "Website design for accounting firms",
+    "Accountancy website development",
+    "Local search engine optimisation",
+    "Online appointment booking",
+    "AI chatbot integration",
+    "CRM integration",
+    "Website maintenance",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmMono.variable} ${dmSans.variable} ${plusJakarta.variable}`}>
+    <html lang="en-GB" className={`${dmMono.variable} ${dmSans.variable} ${plusJakarta.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+      </head>
       <body>
         <Navbar />
         {children}
