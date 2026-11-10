@@ -1,15 +1,40 @@
 "use client";
 
+import { CheckCircle2, FileText, MessageSquareText, MousePointerClick } from "lucide-react";
 
+const outcomes = [
+  { icon: FileText, title: "Explain your services", detail: "Make accounts, tax, payroll and advisory services easy to understand." },
+  { icon: CheckCircle2, title: "Build confidence", detail: "Present your experience, approach and credentials clearly." },
+  { icon: MousePointerClick, title: "Guide the next step", detail: "Give visitors clear ways to enquire, call or book a consultation." },
+  { icon: MessageSquareText, title: "Stay connected", detail: "Bring enquiries and useful tools together around your workflow." },
+];
 
 export default function Testimonial() {
   return (
-    <section className="px-8 lg:px-12 py-20 text-center" style={{ backgroundColor: "var(--color-caramel)" }}>
-      <p className="font-black leading-none mb-2" style={{ fontFamily: "var(--font-serif)", fontSize: "5rem", color: "rgba(255,255,255,0.15)" }}>&ldquo;</p>
-      <blockquote className="text-2xl lg:text-3xl font-bold text-white max-w-2xl mx-auto leading-snug mb-5" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>
-        Caramel built our site and chatbot in under two weeks. We now get qualified enquiries while we sleep.
-      </blockquote>
-      <p className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>— Principal Accountant, West London practice</p>
+    <section className="bg-[#f4eee6] px-6 py-20 sm:px-10 lg:px-16 lg:py-24">
+      <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
+        <div>
+          <p className="eyebrow mb-5">Designed around your clients</p>
+          <h2 className="font-serif-tech text-3xl font-bold leading-[1.12] tracking-[-.04em] text-charcoal sm:text-4xl">
+            What should a good accounting website do?
+          </h2>
+          <p className="mt-5 max-w-lg text-[.95rem] leading-7 text-charcoal-muted">
+            It should answer the questions a prospective client has before they
+            contact you — and make the decision to get in touch feel straightforward.
+          </p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {outcomes.map(({ icon: Icon, title, detail }) => (
+            <div key={title} className="rounded-2xl border border-caramel/15 bg-white/75 p-6">
+              <div className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-caramel-light text-caramel-dark">
+                <Icon size={19} strokeWidth={1.6} />
+              </div>
+              <h3 className="font-serif-tech text-lg font-semibold text-charcoal">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-charcoal-muted">{detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
