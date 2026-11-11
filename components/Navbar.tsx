@@ -1,116 +1,122 @@
 
 "use client";
 
+import {  useState } from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
-  const closeMobileMenu = () => {
-    setMobileOpen(false);
-  };
+
+
+  const navLinks = [
+    { name: "Services", href: "/#services" },
+    { name: "Who we help", href: "/#who-we-help" },
+    { name: "Our approach", href: "/#approach" },
+    { name: "Our work", href: "/our-work" },
+    {
+      name: "Accountant web design",
+      href: "/web-design-for-accountants-london",
+    },
+  ];
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 px-4 pt-4 sm:px-6">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-[#e9e2d9] bg-cream/95 px-5 py-3 shadow-lg shadow-black/5 backdrop-blur-xl sm:px-7">
-        {/* Logo */}
-        <Link
-          href="/"
-          onClick={closeMobileMenu}
-          className="group flex items-center gap-2"
-          aria-label="Caramel Web Studios home"
-        >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-caramel text-sm font-bold text-white transition-transform group-hover:rotate-12">
-            C
-          </span>
-
-          <span className="text-base font-semibold tracking-tight text-[#2b2621] sm:text-lg">
-            Caramel
-            <span className="ml-1 font-normal text-[#8b7968]">
-              Web Studios
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-8 lg:px-10">
+        <nav className="mx-auto flex max-w-360 items-center justify-between gap-4 rounded-full border border-caramel/20 bg-cream/95 px-5 py-3 shadow-lg shadow-charcoal/6 backdrop-blur-xl sm:px-7">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="group flex shrink-0 flex-col leading-[.95]"
+            aria-label="Caramel Web Studios home"
+          >
+            <span className="font-syne text-[12px] font-bold uppercase tracking-[.11em] text-charcoal sm:text-[13px]">
+              Caramel <span className="text-caramel">Web</span>
             </span>
-          </span>
-        </Link>
+            <span className="mt-1 font-cormorant text-[11px] font-semibold tracking-[.16em] text-caramel">
+              Studios
+            </span>
+          </Link>
 
-        {/* Desktop navigation */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-[#62574e] transition-colors hover:text-caramel"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* Desktop CTA */}
-        <Link
-          href="https://cal.com/caramelwebstudios/website-consultation"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden items-center gap-2 rounded-full bg-[#2b2621] px-5 py-3 text-sm font-medium text-white transition-all hover:bg-caramel md:inline-flex"
-        >
-          Book a consultation
-          <ArrowUpRight size={16} />
-        </Link>
-
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setMobileOpen((open) => !open)}
-          className="flex h-10 w-10 items-center justify-center rounded-full text-[#2b2621] transition-colors hover:bg-[#eee7df] md:hidden"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-navigation"
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </nav>
-
-      {/* Mobile navigation */}
-      {mobileOpen && (
-        <div
-          id="mobile-navigation"
-          className="mx-auto mt-3 max-w-7xl overflow-hidden rounded-3xl border border-[#e9e2d9] bg-cream p-5 shadow-xl shadow-black/10 md:hidden"
-        >
-          <div className="flex flex-col gap-1">
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-5 xl:flex">
             {navLinks.map((link) => (
               <Link
-                key={link.href}
+                key={link.name}
                 href={link.href}
-                onClick={closeMobileMenu}
-                className="rounded-xl px-4 py-3 text-base font-medium text-[#2b2621] transition-colors hover:bg-[#eee7df] hover:text-caramel"
+                aria-current={pathname === link.href ? "page" : undefined}
+                className="nav-link whitespace-nowrap"
               >
-                {link.label}
+                {link.name}
+              </Link>
+            ))}
+
+            <Link href="/book" className="nav-cta whitespace-nowrap">
+              Book a call <ArrowUpRight size={14} />
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-charcoal/10 text-charcoal transition-colors hover:bg-caramel/10 xl:hidden"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
+          >
+            {mobileOpen ? <X size={19} /> : <Menu size={19} />}
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile Navigation */}
+      <div
+        id="mobile-navigation"
+        aria-hidden={!mobileOpen}
+        className={`fixed inset-0 z-40 bg-cream px-8 pb-12 pt-28 transition-all duration-300 xl:hidden ${
+          mobileOpen
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-3 opacity-0"
+        }`}
+      >
+        <div className="mx-auto flex h-full max-w-xl flex-col">
+          <p className="eyebrow mb-7">Navigate the studio</p>
+
+          <div className="flex flex-col gap-4">
+            {navLinks.map((link, index) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-baseline gap-4 border-b border-charcoal/10 pb-4 font-serif-tech text-xl font-semibold tracking-tight text-charcoal transition-colors hover:text-caramel-dark"
+              >
+                <span className="font-mono-tech text-[10px] text-caramel">
+                  0{index + 1}
+                </span>
+                {link.name}
               </Link>
             ))}
           </div>
 
-          <div className="mt-4 border-t border-[#e9e2d9] pt-4">
+          <div className="mt-auto">
+            <p className="mb-4 font-mono-tech text-[10px] uppercase tracking-[.18em] text-charcoal-muted">
+              London · Digital studio for accountants
+            </p>
+
             <Link
-              href="https://cal.com/caramelwebstudios/website-consultation"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMobileMenu}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-[#2b2621] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-caramel"
+              href="/book"
+              onClick={() => setMobileOpen(false)}
+              className="nav-cta w-full py-4"
             >
-              Book a consultation
-              <ArrowUpRight size={16} />
+              Book a free review <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>
-      )}
-    </header>
+      </div>
+    </>
   );
 }
