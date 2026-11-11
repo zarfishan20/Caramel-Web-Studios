@@ -30,7 +30,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 lg:px-12 ${
           scrolled || isBooking || mobileOpen
-            ? "py-4 bg-cream/85 backdrop-blur-xl border-b border-caramel/15 shadow-sm"
+            ? "py-4 bg-cream backdrop-blur-xl border-b border-caramel/15 shadow-sm"
             : "py-7 bg-transparent"
         }`}
       >
