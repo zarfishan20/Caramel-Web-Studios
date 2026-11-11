@@ -9,8 +9,8 @@ export default function NicheBand() {
 
   return (
     <section id="who-we-help" className="relative overflow-hidden bg-caramel px-6 py-9 sm:px-10 lg:px-16">
-      <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-white/10 to-transparent" />
-      <div className="relative mx-auto flex max-w-[1320px] flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 bg-linear-to-l from-white/10 to-transparent" />
+      <div className="relative mx-auto flex max-w-330 flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, x: -18 }}
           whileInView={{ opacity: 1, x: 0 }}

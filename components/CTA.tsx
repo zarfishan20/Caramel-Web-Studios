@@ -37,7 +37,7 @@ export default function CTA() {
             <span className="grid h-8 w-8 place-items-center rounded-full bg-caramel text-white transition-transform group-hover:rotate-45"><ArrowUpRight size={16} /></span>
           </Link>
           <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-white/85">
-            <a href="mailto:info@caramelwebstudios.com" className="inline-flex items-center gap-2 transition-colors hover:text-white"><Mail size={14} /> info@caramelwebstudios.com</a>
+            <a href="mailto:enquire@caramelwebstudios.com" className="inline-flex items-center gap-2 transition-colors hover:text-white"><Mail size={14} /> enquire@caramelwebstudios.com</a>
             <span className="inline-flex items-center gap-2"><MapPin size={14} /> Barking, London</span>
           </div>
         </div>

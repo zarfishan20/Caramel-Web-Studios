@@ -16,7 +16,7 @@ export default function StatsBand() {
   return (
     <section className="relative overflow-hidden bg-charcoal px-6 py-14 sm:px-10 lg:px-16 lg:py-16">
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,rgba(197,141,89,.16),transparent_55%)]" />
-      <div className="relative mx-auto grid max-w-[1320px] gap-8 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="relative mx-auto grid max-w-330 gap-8 sm:grid-cols-2 xl:grid-cols-4">
         {principles.map(({ icon: Icon, title, detail }, index) => (
           <motion.div
             key={title}
@@ -28,7 +28,7 @@ export default function StatsBand() {
           >
             <Icon size={20} strokeWidth={1.6} className="mb-4 text-caramel" />
             <h3 className="font-serif-tech text-lg font-semibold text-cream">{title}</h3>
-            <p className="mt-2 max-w-[250px] text-sm leading-6 text-cream/60">{detail}</p>
+            <p className="mt-2 max-w-62.5 text-sm leading-6 text-cream/60">{detail}</p>
           </motion.div>
         ))}
       </div>

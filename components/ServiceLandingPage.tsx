@@ -77,7 +77,7 @@ export default function ServiceLandingPage({ content }: { content: ServicePageCo
         </div>
       </section>
 
-      <section className="bg-[#f4eee6] px-6 py-20 sm:px-10 lg:px-16">
+      <section className="bg-caramel-off px-6 py-20 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow mb-5">How we can help</p>
           <h2 className="max-w-3xl font-serif-tech text-3xl font-bold tracking-tight sm:text-4xl">{content.benefitsTitle}</h2>
@@ -129,7 +129,7 @@ export default function ServiceLandingPage({ content }: { content: ServicePageCo
       <section className="bg-caramel px-6 py-16 text-white sm:px-10 lg:px-16 lg:py-20">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-7 md:flex-row md:items-center">
           <div>
-            <p className="mb-3 font-mono-tech text-[10px] uppercase tracking-[.18em] text-white/75">Let's talk about your practice</p>
+            <p className="mb-3 font-mono-tech text-[10px] uppercase tracking-[.18em] text-white/75">Let&apos;s talk about your practice</p>
             <h2 className="max-w-2xl font-serif-tech text-3xl font-bold tracking-tight sm:text-4xl">A digital experience that feels right for your firm.</h2>
             <p className="mt-3 max-w-xl text-sm leading-7 text-white/85">Tell us what you need and we can talk through a practical next step.</p>
           </div>

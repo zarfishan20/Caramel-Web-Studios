@@ -68,7 +68,7 @@ export default function Services() {
 
   return (
     <section id="services" className="bg-cream px-6 py-24 sm:px-10 lg:px-16 lg:py-28">
-      <div className="mx-auto max-w-[1320px]">
+      <div className="mx-auto max-w-330">
         <div className="mb-14 grid gap-8 lg:grid-cols-[1fr_.7fr] lg:items-end">
           <div>
             <p className="eyebrow mb-5">What your practice needs online</p>
@@ -94,7 +94,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: .15 }}
                 transition={{ duration: .55, delay: index * .06, ease: [.2,.8,.2,1] }}
-                className="service-card group relative flex min-h-[350px] flex-col overflow-hidden rounded-[1.4rem] border border-caramel/15 bg-white/75 p-7 sm:p-8"
+                className="service-card group relative flex min-h-87.5 flex-col overflow-hidden rounded-[1.4rem] border border-caramel/15 bg-white/75 p-7 sm:p-8"
               >
                 <div className="absolute -right-12 -top-14 h-44 w-44 rounded-full bg-caramel/[.07] blur-2xl transition-transform duration-700 group-hover:scale-150" />
                 <div className="relative flex items-start justify-between">
@@ -115,7 +115,7 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-                <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-caramel transition-all duration-700 group-hover:w-full" />
+                <div className="absolute bottom-0 left-0 h-0.75 w-0 bg-caramel transition-all duration-700 group-hover:w-full" />
               </motion.article>
             );
           })}
