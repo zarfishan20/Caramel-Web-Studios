@@ -41,7 +41,7 @@ export default function ContactPage() {
                   href="mailto:info@caramelwebstudios.com"
                   className="text-lg font-medium transition-colors hover:text-caramel"
                 >
-                  info@caramelwebstudios.com
+                  enquire@caramelwebstudios.com
                 </a>
               </div>
 
