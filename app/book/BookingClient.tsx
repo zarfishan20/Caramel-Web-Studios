@@ -62,7 +62,7 @@ export default function BookingClient() {
         </div>
       </section>
 
-      <section className="border-b border-caramel/15 bg-[#f4eee6] px-6 py-10 sm:px-10 lg:px-16">
+      <section className="border-b border-caramel/15 bg-caramel-off px-6 py-10 sm:px-10 lg:px-16">
         <div className="mx-auto grid max-w-6xl gap-7 sm:grid-cols-2 lg:grid-cols-4">
           {perks.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="flex items-start gap-3">
@@ -109,7 +109,7 @@ export default function BookingClient() {
 
       <section className="bg-charcoal px-6 py-16 text-cream sm:px-10 lg:px-16 lg:py-20">
         <div className="mx-auto max-w-3xl">
-          <p className="eyebrow mb-4 !text-caramel">Before we speak</p>
+          <p className="eyebrow mb-4 text-caramel!">Before we speak</p>
           <h2 className="mb-9 font-serif-tech text-3xl font-bold tracking-tight sm:text-4xl">A few things you might be wondering.</h2>
           <div className="space-y-6">
             {faqs.map(({ q, a }) => (

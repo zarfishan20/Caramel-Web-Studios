@@ -29,7 +29,6 @@ const services = [
 
 const companyLinks = [
   { label: "Our work", href: "/our-work" },
-  { label: "About us", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
@@ -112,30 +111,8 @@ export default function Footer() {
               ))}
             </ul>
 
-            <Link
-              href="/web-design-for-accountants-london"
-              className="mt-5 block text-xs text-cream/65 transition-colors hover:text-caramel"
-            >
-              Web design for London accountants
-            </Link>
-
-            <Link
-              href="/book"
-              className="mt-3 inline-block text-xs text-cream/65 transition-colors hover:text-caramel"
-            >
-              Book a free 15-minute review
-            </Link>
-
-            <a
-              href="mailto:info@caramelwebstudios.com"
-              className="mt-3 block break-all text-xs text-cream/65 transition-colors hover:text-caramel"
-            >
-              enquire@caramelwebstudios.com
-            </a>
-
-            <p className="mt-3 text-xs text-cream/40">
-              Barking, London
-            </p>
+            
+         
           </div>
         </div>
 
