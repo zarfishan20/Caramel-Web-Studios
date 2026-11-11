@@ -153,14 +153,14 @@ export default function AccountantWebDesignPage() {
             <p>
               We work with practices such as chartered accountancy firms, tax
               advisers, bookkeeping businesses and payroll specialists. Each
-              website is planned around the firm's audience, service mix and
+              website is planned around the firm&apos;s audience, service mix and
               preferred way of handling enquiries.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f4eee6] px-6 py-20 sm:px-10 lg:px-16">
+      <section className="bg-caramel-off px-6 py-20 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow mb-5">What we can build</p>
           <h2 className="max-w-3xl font-serif-tech text-3xl font-bold tracking-tight sm:text-4xl">

@@ -77,7 +77,7 @@ function ProjectVisual({
         <span className="h-2 w-2 rounded-full bg-[#91b59b]" />
         <div className="ml-3 h-5 flex-1 rounded-full bg-white/70" />
       </div>
-      <div className={`flex min-h-[255px] flex-col overflow-hidden rounded-lg ${themes.surface}`}>
+      <div className={`flex min-h-63.75 flex-col overflow-hidden rounded-lg ${themes.surface}`}>
         <div className={`flex items-center justify-between px-5 py-4 text-white sm:px-7 ${themes.panel}`}>
           <span className="font-serif-tech text-sm font-semibold tracking-wide">{project.name}</span>
           <span className="hidden text-[8px] uppercase tracking-[.16em] text-white/65 sm:inline">Professional services</span>
@@ -160,7 +160,7 @@ export default function OurWorkPage() {
                 <div className="py-1 lg:py-4">
                   <div className="mb-5 flex flex-wrap items-center gap-2">
                     <span className="font-mono-tech text-[10px] tracking-[.15em] text-caramel">{project.number} / 03</span>
-                    <span className="rounded-full border border-caramel/25 bg-caramel-light px-3 py-1 text-[9px] font-semibold uppercase tracking-[.1em] text-caramel-dark">
+                    <span className="rounded-full border border-caramel/25 bg-caramel-light px-3 py-1 text-[9px] font-semibold uppercase tracking-widest text-caramel-dark">
                       Live website
                     </span>
                   </div>
