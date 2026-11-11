@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import BookingClient from "./BookingClient";
 
 export const metadata: Metadata = {
-  title: "Book a Free Review | Caramel Web Studios",
+  title: "Book a Free Website Review",
   description:
-    "Book a free 30-minute website review with Caramel Web Studios. We'll audit your accounting firm's online presence and show you what's possible.",
+    "Arrange a free 15-minute website review with Caramel Web Studios. Discuss your London accounting firm's website, client journey and practical improvements.",
+  alternates: {
+    canonical: "/book",
+  },
 };
 
 export default function BookPage() {
-  return <BookingClient />
+  return <BookingClient />;
 }
