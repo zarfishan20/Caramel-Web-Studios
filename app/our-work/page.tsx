@@ -38,7 +38,7 @@ const projects = [
     palette: "clay",
     initials: "M&M",
   },
-];
+] as const;
 
 function ProjectVisual({
   project,
