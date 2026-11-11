@@ -1,47 +1,47 @@
 "use client";
+
 import Link from "next/link";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function CTA() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section
-      id="contact"
-      className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 px-8 lg:px-12 py-24"
-      style={{ backgroundColor: "var(--color-ink-dark)" }}
-    >
-      <div>
-        <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight" style={{ fontFamily: "var(--font-serif)", color: "var(--color-caramel-lighter)" }}>
-          Ready to make your firm{" "}
-          <em style={{ fontStyle: "italic", color: "var(--color-caramel)" }}>impossible</em>
-          <br />
-          to ignore online?
-        </h2>
-      </div>
-      <div className="space-y-5">
-        <p className="text-sm leading-relaxed" style={{ color: "rgba(251,246,238,0.5)" }}>
-          Book a free 30-minute website review. We&apos;ll audit your current online presence and show you exactly what&apos;s possible — no jargon, no pressure.
-        </p>
-        <Link
-          href="/book"
-          className="inline-block px-7 py-3 rounded-full font-medium text-sm text-white transition-colors"
-          style={{ backgroundColor: "var(--color-caramel)" }}
-          onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--color-caramel-dark)")}
-          onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--color-caramel)")}
-        >
-          Book your free review →
-        </Link>
-        <div className="flex flex-wrap gap-3 pt-1">
-          <a
-            href="mailto:info@caramelwebstudios.com"
-            className="text-sm px-4 py-2 rounded-full border transition-colors"
-            style={{ borderColor: "color-mix(in srgb, var(--color-caramel) 25%, transparent)", color: "rgba(201,118,58,0.8)" }}
-          >
-            info@caramelwebstudios.com
-          </a>
-          <span className="text-sm px-4 py-2 rounded-full border" style={{ borderColor: "color-mix(in srgb, var(--color-caramel) 25%, transparent)", color: "rgba(201,118,58,0.8)" }}>
-            Barking, London
-          </span>
+    <section id="contact" className="relative overflow-hidden bg-caramel px-6 py-24 sm:px-10 lg:px-16 lg:py-28">
+      <div aria-hidden className="absolute -right-28 -top-44 h-[38rem] w-[38rem] rounded-full border border-white/20" />
+      <div aria-hidden className="absolute -right-8 -top-24 h-[28rem] w-[28rem] rounded-full border border-white/15" />
+      <div aria-hidden className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-charcoal/10 blur-[100px]" />
+
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: .65 }}
+        className="relative mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[1.1fr_.7fr] lg:items-end"
+      >
+        <div>
+          <p className="mb-6 font-mono-tech text-[10px] font-semibold uppercase tracking-[.18em] text-white/75">A useful first step</p>
+          <h2 className="max-w-4xl font-serif-tech text-4xl font-bold leading-[1.08] tracking-[-.045em] text-white sm:text-5xl lg:text-6xl">
+            Let&apos;s make your website work harder for your practice.
+          </h2>
         </div>
-      </div>
+        <div className="max-w-lg lg:justify-self-end">
+          <p className="text-[1.05rem] leading-[1.8] text-white/90">
+            Book a free 15-minute website review. We&apos;ll look at how your firm
+            comes across online, discuss what you want to improve and suggest
+            practical next steps — with no obligation.
+          </p>
+          <Link href="/book" className="group mt-8 inline-flex items-center gap-5 rounded-full bg-charcoal px-6 py-4 text-sm font-semibold text-cream transition-all duration-300 hover:-translate-y-1 hover:bg-caramel-dark">
+            Arrange your free review
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-caramel text-white transition-transform group-hover:rotate-45"><ArrowUpRight size={16} /></span>
+          </Link>
+          <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-white/85">
+            <a href="mailto:info@caramelwebstudios.com" className="inline-flex items-center gap-2 transition-colors hover:text-white"><Mail size={14} /> info@caramelwebstudios.com</a>
+            <span className="inline-flex items-center gap-2"><MapPin size={14} /> Barking, London</span>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

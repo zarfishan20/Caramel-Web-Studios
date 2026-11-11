@@ -1,4 +1,3 @@
-
 import Hero from "@/components/Hero";
 import StatsBand from "@/components/StatsBand";
 import NicheBand from "@/components/NicheBand";
@@ -9,9 +8,9 @@ import CTA from "@/components/CTA";
 
 export default function Home() {
   return (
-    <main>
-     
+    <main className="site-shell">
       <Hero />
+      <NicheBand />
       <StatsBand />
       <Services />
       <HowItWorks />

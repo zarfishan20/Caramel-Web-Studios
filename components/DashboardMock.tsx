@@ -1,69 +1,52 @@
-
-
 "use client";
 
-
+import { ArrowUpRight, CheckCircle2, Menu } from "lucide-react";
 
 export default function DashboardMock() {
   return (
-    <div className="reveal w-full max-w-md rounded-3xl border border-caramel/15 bg-charcoal-soft p-6 shadow-2xl shadow-black/40">
-      <div className="flex items-center gap-1.5">
-        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-        <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-        <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+    <div className="overflow-hidden rounded-[1.25rem] border border-[#d9e0d7] bg-[#fbfaf6] shadow-xl shadow-charcoal/10">
+      <div className="flex items-center justify-between border-b border-[#d9e0d7] bg-[#fbfaf6] px-5 py-4 sm:px-7">
+        <div>
+          <p className="font-serif-tech text-sm font-bold tracking-[.08em] text-[#29473d]">WILLOW & CO.</p>
+          <p className="mt-0.5 text-[8px] uppercase tracking-[.2em] text-[#7b897d]">Chartered Accountants</p>
+        </div>
+        <div className="hidden items-center gap-5 text-[8px] font-medium text-[#53685c] sm:flex">
+          <span>Our services</span><span>Our people</span><span>Insights</span>
+          <span className="rounded-full bg-[#29473d] px-3 py-2 text-[#fbfaf6]">Get in touch</span>
+        </div>
+        <Menu size={17} className="text-[#29473d] sm:hidden" />
       </div>
 
-      <div className="mt-6 font-mono-ui text-[10px] text-cream/50">
-        Client Dashboard — Smith & Co. CPA
+      <div className="relative isolate min-h-[250px] overflow-hidden bg-[#e7eee5] px-6 py-9 sm:px-9 sm:py-12">
+        <div aria-hidden className="absolute -right-10 -top-12 h-64 w-64 rounded-full border border-[#9eae9e]/50" />
+        <div aria-hidden className="absolute right-8 top-8 h-44 w-44 rounded-full border border-[#9eae9e]/45" />
+        <div aria-hidden className="absolute -bottom-24 right-24 h-52 w-52 rounded-full bg-[#cbd9ca]/65 blur-2xl" />
+        <div aria-hidden className="absolute right-16 top-12 hidden h-40 w-32 rotate-[18deg] rounded-[90%_0_90%_0] border border-[#829a87]/50 bg-[#b9cbb9]/35 sm:block" />
+        <div className="relative max-w-[320px]">
+          <p className="mb-3 font-mono-tech text-[8px] uppercase tracking-[.2em] text-[#657e6b]">A clearer view of your finances</p>
+          <h3 className="font-serif-tech text-3xl font-semibold leading-[1.08] tracking-[-.04em] text-[#29473d] sm:text-4xl">
+            Thoughtful advice.<br /><span className="font-normal italic text-[#8b7656]">Room to grow.</span>
+          </h3>
+          <p className="mt-4 max-w-[260px] text-[10px] leading-5 text-[#68796e] sm:text-xs">
+            Personal accountancy and tax guidance for people building something meaningful.
+          </p>
+          <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#29473d] px-4 py-2.5 text-[9px] font-semibold text-[#fbfaf6]">
+            Meet your accountant <ArrowUpRight size={12} />
+          </div>
+        </div>
+        <div aria-hidden className="absolute bottom-0 right-5 hidden h-28 w-24 rounded-t-[48%] border-x border-t border-[#8ba18f]/50 sm:block" />
       </div>
 
-      <div className="mt-4 grid grid-cols-3 gap-2.5">
-        {[
-          { v: "94", l: "Leads" },
-          { v: "31", l: "Booked" },
-          { v: "12k", l: "Revenue" },
-        ].map((s) => (
-          <div key={s.l} className="rounded-xl border border-caramel/15 bg-charcoal p-3">
-            <div className="font-display text-2xl text-caramel">{s.v}</div>
-            <div className="mt-1 font-mono-ui text-[9px] text-cream/45">{s.l}</div>
+      <div className="grid grid-cols-3 divide-x divide-[#e1e7df] bg-[#fbfaf6] px-3 py-4 sm:px-6">
+        {["Accounts & tax", "Business advice", "Personal finance"].map((item) => (
+          <div key={item} className="flex items-center justify-center gap-1.5 px-1 text-center text-[8px] font-medium text-[#53685c] sm:gap-2 sm:text-[9px]">
+            <CheckCircle2 size={11} className="shrink-0 text-[#718b75]" /> {item}
           </div>
         ))}
       </div>
-
-      {/* Bar chart */}
-      <div className="mt-4 flex h-24 items-end gap-2 rounded-xl border border-caramel/15 bg-charcoal p-3">
-        {[55, 70, 45, 85, 60, 92, 78].map((h, i) => (
-          <div
-            key={i}
-            className="flex-1 rounded-md bg-linear-to-t from-caramel-deep to-caramel"
-            style={{ height: `${h}%` }}
-          />
-        ))}
-      </div>
-
-      <div className="mt-4 space-y-2">
-        {[
-          { i: "JW", n: "James Whitfield", s: "Tax Planning · Consultation" },
-          { i: "SR", n: "Sarah Reeves LLC", s: "Audit Prep · Follow-up" },
-        ].map((c) => (
-          <div
-            key={c.i}
-            className="flex items-center justify-between rounded-xl border border-caramel/15 bg-charcoal px-3 py-2.5"
-          >
-            <div className="flex items-center gap-3">
-              <div className="grid h-8 w-8 place-items-center rounded-full bg-caramel/15 font-mono-ui text-[10px] text-caramel">
-                {c.i}
-              </div>
-              <div>
-                <div className="text-[12px] text-cream">{c.n}</div>
-                <div className="font-mono-ui text-[9px] text-cream/45">{c.s}</div>
-              </div>
-            </div>
-            <span className="rounded-full border border-teal/40 bg-teal/15 px-2.5 py-1 font-mono-ui text-[9px] text-teal">
-              Confirmed
-            </span>
-          </div>
-        ))}
+      <div className="flex items-center justify-between border-t border-[#e1e7df] bg-[#fbfaf6] px-5 py-3 sm:px-7">
+        <span className="font-mono-tech text-[7px] uppercase tracking-[.16em] text-[#89958a]">Illustrative homepage concept</span>
+        <span className="text-[8px] font-semibold text-[#718b75]">A considered, people-first approach</span>
       </div>
     </div>
   );

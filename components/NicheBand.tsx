@@ -1,25 +1,42 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 
-
-const badges = ["Chartered accountants","Tax advisors","Bookkeepers","Payroll firms"];
+const audiences = ["Chartered accountancy practices", "Tax advisers", "Bookkeeping firms", "Payroll specialists"];
 
 export default function NicheBand() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <div
-      className="px-8 lg:px-12 py-8 flex flex-wrap items-center justify-between gap-6"
-      style={{ backgroundColor: "var(--color-caramel)" }}
-    >
-      <h2 className="text-xl font-bold text-white max-w-md leading-snug" style={{ fontFamily: "var(--font-serif)" }}>
-        Built for chartered accountants, tax advisors, and bookkeeping firms across London.
-      </h2>
-      <div className="flex flex-wrap gap-2">
-        {badges.map((b) => (
-          <span key={b} className="text-xs font-medium px-4 py-1.5 rounded-full text-white" style={{ backgroundColor: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)" }}>
-            {b}
-          </span>
-        ))}
+    <section id="who-we-help" className="relative overflow-hidden bg-caramel px-6 py-9 sm:px-10 lg:px-16">
+      <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-white/10 to-transparent" />
+      <div className="relative mx-auto flex max-w-[1320px] flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, x: -18 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: .55 }}
+        >
+          <p className="mb-2 font-mono-tech text-[9px] uppercase tracking-[.18em] text-white/70">Who we work with</p>
+          <h2 className="max-w-xl font-serif-tech text-xl font-semibold leading-snug text-white sm:text-2xl">
+            Digital experiences shaped around professional accounting services.
+          </h2>
+        </motion.div>
+        <div className="flex flex-wrap gap-2">
+          {audiences.map((audience, index) => (
+            <motion.span
+              key={audience}
+              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: .4, delay: index * .07 }}
+              className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[10px] font-medium tracking-wide text-white backdrop-blur-sm"
+            >
+              {audience}
+            </motion.span>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
