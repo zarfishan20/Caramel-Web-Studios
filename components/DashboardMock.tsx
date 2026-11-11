@@ -7,7 +7,7 @@ export default function DashboardMock() {
     <div className="overflow-hidden rounded-[1.25rem] border border-[#d9e0d7] bg-[#fbfaf6] shadow-xl shadow-charcoal/10">
       <div className="flex items-center justify-between border-b border-[#d9e0d7] bg-[#fbfaf6] px-5 py-4 sm:px-7">
         <div>
-          <p className="font-serif-tech text-sm font-bold tracking-[.08em] text-[#29473d]">WILLOW & CO.</p>
+          <p className="font-serif-tech text-sm font-bold tracking-[.08em] text-[#29473d]">Westbridge Accountants</p>
           <p className="mt-0.5 text-[8px] uppercase tracking-[.2em] text-[#7b897d]">Chartered Accountants</p>
         </div>
         <div className="hidden items-center gap-5 text-[8px] font-medium text-[#53685c] sm:flex">
