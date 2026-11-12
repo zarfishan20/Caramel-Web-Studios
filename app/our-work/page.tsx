@@ -40,61 +40,28 @@ const projects = [
   },
 ] as const;
 
-function ProjectVisual({
-  project,
-}: {
-  project: (typeof projects)[number];
-}) {
-  const themes = {
-    navy: {
-      frame: "bg-[#e8edf2]",
-      panel: "bg-[#17283b]",
-      accent: "text-[#c58d59]",
-      mark: "bg-[#c58d59]",
-      surface: "bg-[#f8f9fa]",
-    },
-    sage: {
-      frame: "bg-[#e7eee5]",
-      panel: "bg-[#29473d]",
-      accent: "text-[#8b7656]",
-      mark: "bg-[#8b7656]",
-      surface: "bg-[#fbfaf6]",
-    },
-    clay: {
-      frame: "bg-[#f0e8e1]",
-      panel: "bg-[#49372f]",
-      accent: "text-[#b86f4e]",
-      mark: "bg-[#b86f4e]",
-      surface: "bg-[#fbf8f4]",
-    },
-  }[project.palette];
+function ProjectVisual({ project }: { project: (typeof projects)[number] }) {
+  const screenshotUrl = `https://image.thum.io/get/width/1200/crop/850/noanimate/${project.url}`;
 
   return (
-    <div className={`overflow-hidden rounded-[1.2rem] p-3 shadow-[0_24px_60px_rgba(43,38,33,.10)] sm:p-4 ${themes.frame}`}>
+    <div className="overflow-hidden rounded-[1.2rem] border border-charcoal/10 bg-[#eee9e2] p-3 shadow-[0_24px_60px_rgba(43,38,33,.10)] sm:p-4">
       <div className="mb-3 flex items-center gap-1.5 px-1">
         <span className="h-2 w-2 rounded-full bg-[#df9d92]" />
         <span className="h-2 w-2 rounded-full bg-[#e7c47e]" />
         <span className="h-2 w-2 rounded-full bg-[#91b59b]" />
-        <div className="ml-3 h-5 flex-1 rounded-full bg-white/70" />
-      </div>
-      <div className={`flex min-h-63.75 flex-col overflow-hidden rounded-lg ${themes.surface}`}>
-        <div className={`flex items-center justify-between px-5 py-4 text-white sm:px-7 ${themes.panel}`}>
-          <span className="font-serif-tech text-sm font-semibold tracking-wide">{project.name}</span>
-          <span className="hidden text-[8px] uppercase tracking-[.16em] text-white/65 sm:inline">Professional services</span>
-        </div>
-        <div className="flex flex-1 flex-col justify-center px-6 py-8 sm:px-9">
-          <span className={`mb-3 text-[9px] font-semibold uppercase tracking-[.2em] ${themes.accent}`}>Website design & development</span>
-          <div className="max-w-[85%] font-serif-tech text-2xl font-semibold leading-tight text-[#2b2621] sm:text-3xl">
-            A clearer online presence for your business.
-          </div>
-          <div className={`mt-5 h-1.5 w-16 rounded-full ${themes.mark}`} />
-          <div className="mt-6 flex gap-2">
-            <span className={`rounded-full px-4 py-2 text-[8px] font-semibold text-white ${themes.panel}`}>Explore services</span>
-            <span className="rounded-full border border-[#2b2621]/15 px-4 py-2 text-[8px] font-semibold text-[#2b2621]">Get in touch</span>
-          </div>
+        <div className="ml-3 flex h-5 flex-1 items-center overflow-hidden rounded-full bg-white/80 px-3 text-[9px] text-charcoal-muted">
+          {project.domain}
         </div>
       </div>
-      <p className="mt-2 text-center text-[9px] text-[#2b2621]/55">Project showcase preview</p>
+      <a href={project.url} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-lg bg-white">
+        <img
+          src={screenshotUrl}
+          alt={`Live website screenshot of ${project.name}`}
+          loading="lazy"
+          className="block aspect-[4/3] w-full object-cover object-top"
+        />
+      </a>
+      <p className="mt-2 text-center text-[9px] text-charcoal-muted">Screenshot of the live website · Select to visit</p>
     </div>
   );
 }
