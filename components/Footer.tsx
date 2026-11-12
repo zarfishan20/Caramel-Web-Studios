@@ -121,7 +121,11 @@ export default function Footer() {
 
           <div className="space-y-1 text-center sm:text-left">
             <p>
-              © 2023–{currentYear} Caramel Web Studios. All rights reserved.
+              © {currentYear} Bytesphere Digital Ltd. All rights reserved.
+            </p>
+            <p className="max-w-2xl leading-5">
+              Caramel Web Studios is a trading name of Bytesphere Digital Ltd.
+              Registered in England and Wales · Company No. 16844459.
             </p>
 
           </div>
