@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ExternalLink, Monitor, Smartphone } from "lucide-react";
 
@@ -10,6 +11,7 @@ const projects = [
     name: "FlexiPay Systems",
     type: "Accounting website",
     url: "https://flexipaysystems-accounting-site.vercel.app/",
+    image: "/images/portfolio/flexipay.png",
     domain: "flexipaysystems-accounting-site.vercel.app",
     summary:
       "A live website project created for FlexiPay Systems, bringing its accounting-focused online presence into a clear, professional format.",
@@ -21,6 +23,7 @@ const projects = [
     name: "Alchemy Associates Ltd",
     type: "Chartered certified accountants",
     url: "https://www.alchemyassociates.co.uk/",
+    image: "/images/portfolio/alchemy-associates.png",
     domain: "alchemyassociates.co.uk",
     summary:
       "A professional website for an established accountancy practice in Chadwell Heath, presenting its accounting, bookkeeping, VAT, payroll and tax services.",
@@ -32,6 +35,7 @@ const projects = [
     name: "M&M Accounts and Taxation",
     type: "Accounts and taxation",
     url: "https://www.mandmaccountsandtaxation.co.uk/",
+    image: "/images/portfolio/mandm.png",
     domain: "mandmaccountsandtaxation.co.uk",
     summary:
       "A live website project for an accounts and taxation practice, designed to give the firm a dedicated online presence for prospective clients.",
@@ -41,7 +45,7 @@ const projects = [
 ] as const;
 
 function ProjectVisual({ project }: { project: (typeof projects)[number] }) {
-  const screenshotUrl = `https://image.thum.io/get/width/1200/crop/850/noanimate/${project.url}`;
+  const screenshotUrl = project.image;
 
   return (
     <div className="overflow-hidden rounded-[1.2rem] border border-charcoal/10 bg-[#eee9e2] p-3 shadow-[0_24px_60px_rgba(43,38,33,.10)] sm:p-4">
@@ -54,11 +58,11 @@ function ProjectVisual({ project }: { project: (typeof projects)[number] }) {
         </div>
       </div>
       <a href={project.url} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-lg bg-white">
-        <img
+        <Image
           src={screenshotUrl}
           alt={`Live website screenshot of ${project.name}`}
           loading="lazy"
-          className="block aspect-[4/3] w-full object-cover object-top"
+          className="block aspect-4/3 w-full object-cover object-top"
         />
       </a>
       <p className="mt-2 text-center text-[9px] text-charcoal-muted">Screenshot of the live website · Select to visit</p>
