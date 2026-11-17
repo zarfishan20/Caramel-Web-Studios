@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       "- Do not present yourself as an accountant or provide personal tax or accounting advice.",
       "",
       "Your goal is to help visitors understand CWS services and choose a sensible next step.",
-    ].join("\\n"),
+    ].join("\n"),
   };
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
