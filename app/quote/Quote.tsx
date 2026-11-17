@@ -54,17 +54,30 @@ export default function PricingQuotePage() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
+
+    const subject = `Website project enquiry — ${formData.firmName}`;
+    const body = [
+      `Firm: ${formData.firmName}`,
+      `Contact: ${formData.contactName}`,
+      `Email: ${formData.email}`,
+      `Current website: ${formData.currentWebsite || "Not supplied"}`,
+      `Budget: ${formData.budgetRange || "Not supplied"}`,
+      `Timeline: ${formData.timeline || "Not supplied"}`,
+      `Requirements: ${formData.requirements.join(", ") || "Not specified"}`,
+      `Additional details: ${formData.additionalDetails || "None"}`,
+    ].join("\n");
+
+    window.location.href = `mailto:enquire@caramelwebstudios.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setIsSubmitted(true);
   };
 
   const requirementsOptions = [
     "Brand Identity & Logo",
     "Complete Website Redesign",
-    "SEO Strategy & Local Optimization",
-    "Content Writing for Accounting Specs",
-    "Client Portal Integration",
-    "Automated Onboarding Forms",
+    "Local SEO foundations",
+    "Website copy for accounting services",
+    "Client portal or secure document exchange",
+    "Enquiry and onboarding forms",
   ];
 
  
@@ -82,13 +95,13 @@ export default function PricingQuotePage() {
               style={{ backgroundColor: "rgba(201,118,58,0.15)", color: "var(--color-caramel-light)", border: "1px solid rgba(201,118,58,0.25)" }}
             >
               <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse" style={{ backgroundColor: "var(--color-caramel)" }} />
-              Free · No obligation · 30 minutes
+              Project enquiry · No obligation
             </div>
          <h1 className="text-4xl lg:text-6xl leading-[1.06] tracking-tight mb-5 font-(--font-serif-tech)">
-  Book your free
+  Tell us about
   <br />
   <em className="text-caramel italic">
-    website review
+    your project
   </em>
 </h1>
           </div>
@@ -132,8 +145,8 @@ export default function PricingQuotePage() {
                   <Clock3 size={14} />
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-bold tracking-wide uppercase text-caramel">24hr Turnaround</h4>
-                  <p className="text-xs text-white/60 leading-normal mt-0.5">Your complete multi-tiered project pricing proposal lands directly in your inbox next business day.</p>
+                  <h4 className="text-[11px] font-bold tracking-wide uppercase text-caramel">Clear next steps</h4>
+                  <p className="text-xs text-white/60 leading-normal mt-0.5">We review your requirements and contact you to discuss a suitable scope and proposal.</p>
                 </div>
               </div>
             </div>
@@ -154,7 +167,7 @@ export default function PricingQuotePage() {
               </div>
               <h2 className="text-xl font-bold tracking-tight mb-2 text-charcoal">Details Received!</h2>
               <p className="text-xs text-charcoal/80 leading-relaxed max-w-sm mx-auto">
-                Thank you for reaching out. We look forward to looking over your details and will follow up with an initial quote by tomorrow.
+                Your email app should open with your project details filled in. Please press Send in your email app to complete your enquiry. If it does not open, email enquire@caramelwebstudios.com directly.
               </p>
               <Link href="/" className="inline-block mt-6 px-5 py-2 text-xs font-bold text-white bg-charcoal rounded-lg hover:bg-charcoal-soft transition-all">
                 Back to Home
