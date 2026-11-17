@@ -44,6 +44,14 @@ export async function POST(req: NextRequest) {
     ].join("\n"),
   };
 
+    const apiKey = process.env.OPENAI_API_KEY?.trim();
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "The chat assistant is not configured yet." },
+        { status: 503 },
+      );
+    }
+
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
