@@ -29,6 +29,7 @@ const services = [
 
 const companyLinks = [
   { label: "Our work", href: "/our-work" },
+  { label: "About CWS", href: "/about-us" },
   { label: "Blog", href: "/blog" },
   { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },

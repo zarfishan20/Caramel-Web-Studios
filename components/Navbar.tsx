@@ -17,6 +17,7 @@ export default function Navbar() {
     { name: "Who we help", href: "/#who-we-help" },
     { name: "Our approach", href: "/#approach" },
     { name: "Our work", href: "/our-work" },
+    { name: "About", href: "/about-us" },
     {
       name: "Accountant web design",
       href: "/web-design-for-accountants-london",

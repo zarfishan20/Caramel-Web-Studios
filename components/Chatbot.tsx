@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { MessageSquare, X, Send, Bot } from "lucide-react";
 import Link from "next/link";
 
@@ -9,10 +9,7 @@ interface Message {
   text: string;
   sender: "bot" | "user";
   timestamp: string;
-  link?: {
-    text: string;
-    url: string;
-  };
+  link?: { text: string; url: string };
 }
 
 export default function Chatbot() {
@@ -20,176 +17,191 @@ export default function Chatbot() {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { 
-      id: 1, 
-      text: "Welcome to Caramel Web Studios. How can we assist with your digital project today?", 
+    {
+      id: 1,
+      text: "Hello, I’m Cara, the Caramel Web Studios assistant. I can answer questions about our websites and digital services for accounting practices.",
       sender: "bot",
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    }
+      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+    },
   ]);
-
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        top: scrollRef.current.scrollHeight,
-        behavior: "smooth"
-      });
-    }
+    scrollRef.current?.scrollTo({
+      top: scrollRef.current.scrollHeight,
+      behavior: "smooth",
+    });
   }, [messages, isTyping, isOpen]);
 
-  const handleSendMessage = (e: FormEvent) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
+  const handleSendMessage = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const submittedText = inputValue.trim();
+    if (!submittedText || isTyping) return;
 
-    const userText = inputValue.toLowerCase().trim();
-    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    
-    const userMsg: Message = { id: Date.now(), text: inputValue, sender: "user", timestamp: now };
-    setMessages((prev) => [...prev, userMsg]);
+    const timestamp = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const userMessage: Message = {
+      id: Date.now(),
+      text: submittedText,
+      sender: "user",
+      timestamp,
+    };
+    const conversation = [
+      ...messages.map((message) => ({
+        role: message.sender === "bot" ? "assistant" as const : "user" as const,
+        content: message.text,
+      })),
+      { role: "user" as const, content: submittedText },
+    ];
+
+    setMessages((previous) => [...previous, userMessage]);
     setInputValue("");
+    setIsTyping(true);
 
-    setTimeout(() => setIsTyping(true), 400);
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: conversation }),
+      });
 
-    setTimeout(() => {
-      setIsTyping(false);
-      let responseText = "";
-      let responseLink: { text: string; url: string } | undefined = undefined;
+      if (!response.ok) throw new Error("Chat request failed");
+      const data: { reply?: string } = await response.json();
+      if (!data.reply) throw new Error("Empty assistant response");
 
-      if (userText === "hi" || userText === "hello" || userText === "hey" || userText.startsWith("hi ")) {
-        responseText = "Hello. I am here to help you navigate our services. Feel free to ask about our pricing, view our portfolio, or ask how to book a website review.";
-      } 
-      else if (userText.includes("book") || userText.includes("schedule") || userText.includes("call") || userText.includes("meeting")) {
-        responseText = "You can schedule your free website review directly on this page using the calendar widget on the left, or visit our /book page to choose a convenient time slot.";
-      } 
-      // Pricing action forwards them to your project inquiry form
-      else if (userText.includes("pricing") || userText.includes("cost") || userText.includes("rate")) {
-        responseText = "Our web development and design projects are tailored specifically to your accounting firm's needs. Please fill out our quick quote form so we can provide an accurate estimate.";
-        responseLink = {
-          text: "Fill out the Quote Form",
-          url: "/quote" // Swap this with your actual form URL path if different (e.g., "/quote" or "/contact")
-        };
-      } 
-      else if (userText.includes("portfolio") || userText.includes("work")) {
-        responseText = "You can view our case studies and previous project work directly in the 'Masterpieces' section of our main menu.";
-      } 
-      else if (userText.includes("audit") || userText.includes("free")) {
-        responseText = "We provide a complimentary Digital Audit to review your current website performance. Just type 'book' if you would like to pick a time for an introductory session.";
-      } 
-      else {
-        responseText = "Thank you for your message. I have logged these details for our client strategy team, and a representative will follow up with you shortly.";
-      }
-
-      const botMsg: Message = { 
-        id: Date.now() + 1, 
-        text: responseText, 
+      const bookingRequested = data.reply.includes("[BOOK_REVIEW]");
+      const workRequested = data.reply.includes("[VIEW_WORK]");
+      const botMessage: Message = {
+        id: Date.now() + 1,
+        text: data.reply.replace("[BOOK_REVIEW]", "").replace("[VIEW_WORK]", "").trim(),
         sender: "bot",
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        link: responseLink
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        link: bookingRequested
+          ? { text: "Book a free 15-minute website review", url: "/book" }
+          : workRequested
+            ? { text: "View our work", url: "/our-work" }
+            : undefined,
       };
-      setMessages((prev) => [...prev, botMsg]);
-    }, 1200);
+      setMessages((previous) => [...previous, botMessage]);
+    } catch {
+      setMessages((previous) => [
+        ...previous,
+        {
+          id: Date.now() + 1,
+          text: "Sorry, the chat assistant is temporarily unavailable. You can still contact the studio using the link below.",
+          sender: "bot",
+          timestamp: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+          link: { text: "Contact Caramel Web Studios", url: "/contact" },
+        },
+      ]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end font-sans text-[#2A2421]">
-      
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end font-sans text-[#2A2421] sm:bottom-6 sm:right-6">
       {isOpen && (
-        <div className="
-          mb-4
-          w-[calc(100vw-2rem)] sm:w-90 
-          h-125 max-h-[80vh]
-          bg-[#FDFBF7] 
-          rounded-2xl 
-          shadow-xl 
-          border border-[#C5A880]/30 
-          overflow-hidden flex flex-col
-        ">
-          {/* Header */}
-          <div className="bg-[#2A2421] p-4 flex items-center justify-between shrink-0">
+        <section
+          aria-label="Chat with Cara"
+          className="mb-4 flex h-[min(31rem,80vh)] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-[#C5A880]/30 bg-[#FDFBF7] shadow-xl sm:w-96"
+        >
+          <div className="flex shrink-0 items-center justify-between bg-[#2A2421] p-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#3A322E] flex items-center justify-center border border-[#C5A880]/20">
-                <Bot className="w-5 h-5 text-[#C5A880]" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#C5A880]/20 bg-[#3A322E]">
+                <Bot className="h-5 w-5 text-[#C5A880]" />
               </div>
               <div>
-                <p className="text-[#FDFBF7] text-sm font-medium tracking-wide">CWS Concierge</p>
-                <p className="text-[#C5A880] text-[10px] tracking-wider uppercase font-medium">Support Assistant</p>
+                <p className="text-sm font-medium tracking-wide text-[#FDFBF7]">Cara · CWS Assistant</p>
+                <p className="text-[10px] font-medium uppercase tracking-wider text-[#C5A880]">Accounting website assistant</p>
               </div>
             </div>
-            <button 
-              onClick={() => setIsOpen(false)} 
-              className="text-[#C5A880]/60 hover:text-[#C5A880] p-1 rounded transition-colors"
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="rounded p-1 text-[#C5A880]/70 transition-colors hover:text-[#C5A880]"
               aria-label="Close chat"
             >
               <X size={18} />
             </button>
           </div>
 
-          {/* Chat History Area */}
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F9F5EF]">
-            {messages.map((msg) => (
-              <div 
-                key={msg.id} 
-                className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} gap-1`}
+          <div ref={scrollRef} aria-live="polite" className="flex-1 space-y-4 overflow-y-auto bg-[#F9F5EF] p-4">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={"flex flex-col gap-1 " + (message.sender === "user" ? "items-end" : "items-start")}
               >
-                <div className={`max-w-[85%] px-3.5 py-2 text-sm rounded-xl flex flex-col gap-2 ${
-                  msg.sender === 'user' 
-                    ? 'bg-[#2A2421] text-[#FDFBF7] rounded-tr-none shadow-sm' 
-                    : 'bg-[#FDFBF7] border border-[#C5A880]/20 text-[#2A2421] rounded-tl-none shadow-xs'
-                }`}>
-                  <span>{msg.text}</span>
-                  
-                  {/* Clean form link container for pricing requests */}
-                  {msg.link && (
-                    <Link 
-                      href={msg.link.url}
-                      className="mt-1 block text-center bg-[#2A2421] text-[#C5A880] font-medium py-2 px-3 rounded-lg text-xs hover:bg-[#3A322E] transition-colors border border-[#C5A880]/20"
+                <div
+                  className={
+                    "flex max-w-[85%] flex-col gap-2 rounded-xl px-3.5 py-2 text-sm " +
+                    (message.sender === "user"
+                      ? "rounded-tr-none bg-[#2A2421] text-[#FDFBF7]"
+                      : "rounded-tl-none border border-[#C5A880]/20 bg-[#FDFBF7] text-[#2A2421]")
+                  }
+                >
+                  <span>{message.text}</span>
+                  {message.link && (
+                    <Link
+                      href={message.link.url}
+                      className="mt-1 block rounded-lg border border-[#C5A880]/20 bg-[#2A2421] px-3 py-2 text-center text-xs font-medium text-[#C5A880] transition-colors hover:bg-[#3A322E]"
                     >
-                      {msg.link.text}
+                      {message.link.text}
                     </Link>
                   )}
                 </div>
-                <span className="text-[9px] text-[#2A2421]/60 font-medium px-1 tracking-wider">{msg.timestamp}</span>
+                <span className="px-1 text-[9px] font-medium tracking-wider text-[#2A2421]/60">
+                  {message.timestamp}
+                </span>
               </div>
             ))}
-
-            {/* Typing Placeholder */}
             {isTyping && (
-              <div className="flex gap-1 p-2 bg-[#FDFBF7] border border-[#C5A880]/20 rounded-lg w-fit items-center">
-                <span className="text-xs text-[#C5A880] font-medium px-1">Typing...</span>
-              </div>
+              <p role="status" className="w-fit rounded-lg border border-[#C5A880]/20 bg-[#FDFBF7] p-2 text-xs font-medium text-[#8A704F]">
+                Cara is thinking…
+              </p>
             )}
           </div>
 
-          {/* Input Form Footer */}
-          <form onSubmit={handleSendMessage} className="p-3 bg-[#FDFBF7] border-t border-[#C5A880]/20 shrink-0">
-            <div className="flex items-center gap-2 bg-[#F9F5EF] border border-[#C5A880]/20 rounded-lg p-1 focus-within:border-[#C5A880] focus-within:bg-[#FDFBF7] transition-all">
-              <input 
-                type="text" 
+          <form onSubmit={handleSendMessage} className="shrink-0 border-t border-[#C5A880]/20 bg-[#FDFBF7] p-3">
+            <div className="flex items-center gap-2 rounded-lg border border-[#C5A880]/20 bg-[#F9F5EF] p-1 transition-all focus-within:border-[#C5A880] focus-within:bg-[#FDFBF7]">
+              <input
+                type="text"
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask a question..." 
-                className="flex-1 bg-transparent px-3 py-1.5 text-sm outline-none text-[#2A2421] placeholder:text-[#2A2421]/40"
+                onChange={(event) => setInputValue(event.target.value)}
+                placeholder="Ask Cara a question…"
+                aria-label="Your message"
+                className="flex-1 bg-transparent px-3 py-1.5 text-sm text-[#2A2421] outline-none placeholder:text-[#2A2421]/40"
               />
-              <button 
+              <button
                 type="submit"
-                disabled={!inputValue.trim()}
-                className="bg-[#2A2421] hover:bg-[#3A322E] p-2 rounded-md text-[#C5A880] disabled:opacity-30 transition-all shadow-xs"
+                disabled={!inputValue.trim() || isTyping}
+                className="rounded-md bg-[#2A2421] p-2 text-[#C5A880] shadow-sm transition-all hover:bg-[#3A322E] disabled:opacity-30"
                 aria-label="Send message"
               >
                 <Send size={14} />
               </button>
             </div>
+            <p className="mt-2 px-1 text-[10px] leading-4 text-[#2A2421]/55">
+              Please don’t share passwords, bank details or sensitive tax information in chat.
+            </p>
           </form>
-        </div>
+        </section>
       )}
 
-      {/* Primary Toggle Action Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#2A2421] hover:bg-[#3A322E] text-[#C5A880] flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all border border-[#C5A880]/20"
-        aria-label={isOpen ? "Close chat panel" : "Open support chat panel"}
+        type="button"
+        onClick={() => setIsOpen((open) => !open)}
+        className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C5A880]/20 bg-[#2A2421] text-[#C5A880] shadow-lg transition-all hover:scale-105 hover:bg-[#3A322E] active:scale-95 sm:h-14 sm:w-14"
+        aria-label={isOpen ? "Close chat panel" : "Open Cara chat assistant"}
+        aria-expanded={isOpen}
       >
         {isOpen ? <X size={24} /> : <MessageSquare size={24} fill="currentColor" />}
       </button>

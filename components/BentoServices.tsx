@@ -38,7 +38,7 @@ const BentoServices = () => {
           </h2>
         </div>
         <p className="text-[#8A8278] text-sm leading-relaxed max-w-sm">
-          Every service is purpose-built for accounting and CPA firms. We understand the compliance and trust dynamics unique to financial professionals.
+          Every service is designed for UK accounting practices. We understand the importance of clear information, professional trust and a straightforward client journey.
         </p>
       </div>
 
