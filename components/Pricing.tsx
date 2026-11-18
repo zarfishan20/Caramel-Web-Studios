@@ -70,10 +70,9 @@ const plans: Record<string, Plan[]> = {
       name: "Monthly Care Plan", 
       price: "£150", 
       priceSuffix: "/mo", 
-     desc: "Essential for AI Chatbot functionality, hosting, and CRM monitoring.", 
+     desc: "Ongoing support for your website, AI chatbot and CRM integrations.", 
       features: [
         "AI Chatbot Subscription",
-        "Premium Website Hosting",
         "Security & Plugin Updates",
         "HubSpot Data Monitoring",
         "Priority Technical Support",
