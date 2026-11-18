@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const sections = [
+type LegalSection = { title: string; paragraphs?: string[]; paragraphs2?: string[]; bullets?: string[] };\n\nconst sections: LegalSection[] = [
   {
     title: "1. Who we are",
     paragraphs: [
