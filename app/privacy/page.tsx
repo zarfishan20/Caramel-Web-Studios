@@ -13,7 +13,7 @@ const sections: LegalSection[] = [
   {
     title: "1. Who we are",
     paragraphs: [
-      "Caramel Web Studios is a trading name of Bytesphere Digital Ltd, a company registered in England and Wales under company number 16844459. We provide website design and development, local SEO foundations, AI chatbot integration, online booking, CRM integration, hosting and website care.",
+      "Caramel Web Studios is a trading name of Bytesphere Digital Ltd, a company registered in England and Wales under company number 16844459. We provide website design and development, local SEO foundations, AI chatbot integration, online booking, CRM integration and website care.",
       "In this policy, “we”, “us” and “our” mean Bytesphere Digital Ltd trading as Caramel Web Studios. We act as a data controller for personal information we use to run our own business. When we handle personal data on behalf of a client through a service we provide, we may act as that client's data processor.",
     ],
     bullets: ["Website: https://caramelwebstudios.com", "Email: enquire@caramelwebstudios.com", "Company number: 16844459"],
