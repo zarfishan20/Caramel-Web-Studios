@@ -8,7 +8,6 @@ import {
   MessageSquareText,
   RefreshCw,
   SearchCheck,
-  ShieldCheck,
 } from "lucide-react";
 import Link from "next/link";
 
