@@ -11,6 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/online-booking`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${siteUrl}/crm-website-care`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${siteUrl}/our-work`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${siteUrl}/book`, changeFrequency: "yearly", priority: 0.7 },
+    { url: `${siteUrl}/book`, changeFrequency: "yearly", priority: 0.7 },\n    { url: `${siteUrl}/privacy`, changeFrequency: "yearly", priority: 0.3 },\n    { url: `${siteUrl}/terms`, changeFrequency: "yearly", priority: 0.3 },
   ];
 }
