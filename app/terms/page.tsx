@@ -55,50 +55,50 @@ const sections: LegalSection[] = [
     paragraphs: ["Maintenance and support are limited to the tasks, hours, response arrangements and service levels included in the package you purchase. Unless expressly included, support does not cover major development, new features, extensive content changes, third-party costs or emergency work. Any response or resolution target is binding only if set out in a separate written service level agreement."],
   },
   {
-    title: "10. AI chatbots and integrations",
+    title: "11. AI chatbots and integrations",
     paragraphs: ["AI chatbots, booking tools, CRM connections and other integrations rely on third-party services and APIs. We will use reasonable care to configure the agreed functionality, but cannot guarantee that an AI system will always produce accurate answers or that a third-party service will remain available, compatible or unchanged. Third-party providers may change their features, pricing, terms or technical requirements."],
     bullets: ["AI-generated content is provided as an assistance tool and is not a substitute for qualified professional judgement or advice.", "Where a chatbot is used for accounting, tax, legal, financial or other regulated or professional services, you are responsible for approving its content, disclosures, escalation routes and intended use.", "You are responsible for ensuring your use of the integrated service complies with applicable law and the provider's terms."],
   },
   {
-    title: "10. Third-party services",
+    title: "12. Third-party services",
     paragraphs: ["Our work may incorporate hosting, payment, booking, CRM, analytics, email, AI and other third-party services. Those services may be subject to separate terms, privacy notices, licences, charges and availability conditions. We are not responsible for a third party's acts, omissions or service interruption, except to the extent that our own breach of contract, negligence or other liability has caused the loss and cannot lawfully be excluded."],
   },
   {
-    title: "10. Security, backups and data protection",
+    title: "13. Security, backups and data protection",
     paragraphs: ["We take reasonable steps to protect systems and information under our control, but no online service can be guaranteed completely secure. Unless backup services are expressly included, you are responsible for maintaining independent copies of your website, files and business data. Where we provide backups, their frequency, retention and restoration scope will be as stated in your service plan."],
     bullets: ["Our Privacy Policy explains how we handle personal information as a controller for our own business. Read it at /privacy.", "Where we process personal data on your behalf as a processor, the parties will enter into a data processing agreement where required by data protection law. You remain responsible for your own lawful basis, privacy information and instructions."],
   },
   {
-    title: "10. Acceptable use",
+    title: "14. Acceptable use",
     paragraphs: ["You must not use our services to break the law, distribute malware, send unlawful spam, infringe another person's rights, attempt unauthorised access, host fraudulent or harmful material, or interfere with our systems or other customers. We may investigate suspected misuse and take proportionate action, including restricting or suspending services where necessary."],
   },
   {
-    title: "10. Confidentiality",
+    title: "15. Confidentiality",
     paragraphs: ["Each party will take reasonable steps to protect confidential information received from the other and use it only for the purposes of the relationship. This does not apply to information that is public through no breach, already lawfully known, independently developed, or required to be disclosed by law."],
   },
   {
-    title: "10. Liability",
+    title: "16. Liability",
     paragraphs: ["Nothing in these terms excludes or limits liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation, or any other liability that cannot lawfully be excluded or limited. Nothing in these terms affects a consumer's statutory rights."],
     bullets: ["Subject to the paragraph above, we are not liable for indirect or consequential loss, or loss of profit, revenue, anticipated savings, business opportunity or goodwill, to the extent such loss can lawfully be excluded.", "We are not responsible for loss caused by inaccurate or incomplete information supplied by you, your misuse of the services, or a third-party failure outside our reasonable control, except where our own breach, negligence or other actionable conduct caused the loss.", "For business customers only, and subject to the exclusions above, our total aggregate liability arising out of or in connection with the relevant project or service is limited to the fees paid or payable for that project or service in the 12 months before the event giving rise to the claim. This limit does not apply where prohibited by law."],
   },
   {
-    title: "10. Suspension and termination",
+    title: "17. Suspension and termination",
     paragraphs: ["Either party may end a service in accordance with the relevant project agreement or subscription terms. We may suspend or terminate a service for a serious breach, unlawful use, a significant security risk, non-payment after reasonable notice, or where a provider or legal requirement makes continued delivery impossible. Where practicable, we will give notice and a reasonable opportunity to resolve the issue. Fees for work already carried out and agreed non-cancellable costs remain payable."],
   },
   {
-    title: "10. Events outside our control",
+    title: "18. Events outside our control",
     paragraphs: ["We are not responsible for delay or failure caused by events beyond our reasonable control, such as major network or infrastructure outages, failures of third-party providers, natural disasters, government action or widespread cyber incidents. We will take reasonable steps to reduce disruption and resume affected services."],
   },
   {
-    title: "10. Complaints and disputes",
+    title: "19. Complaints and disputes",
     paragraphs: ["If you have a concern, please contact us first at enquire@caramelwebstudios.com and explain the issue. We will review it and try to resolve it fairly. If a dispute cannot be resolved informally, either party may use the legal remedies available to them."],
   },
   {
-    title: "10. Changes to these terms",
+    title: "20. Changes to these terms",
     paragraphs: ["We may update these terms for future engagements to reflect changes in our services, technology or legal requirements. The latest version will be published on this page with a revision date. Changes will not retrospectively remove rights or vary an existing agreement without a lawful basis. Where a change materially affects an ongoing service, we will provide appropriate notice."],
   },
   {
-    title: "22. Governing law and contact",
+    title: "21. Governing law and contact",
     paragraphs: ["These terms are governed by the law of England and Wales. The courts of England and Wales will have jurisdiction, subject to any mandatory consumer protections that allow a consumer to bring proceedings elsewhere."],
     bullets: ["Caramel Web Studios (a trading name of Bytesphere Digital Ltd)", "Company number: 16844459", "Email: enquire@caramelwebstudios.com", "Website: https://caramelwebstudios.com", "Registered in England and Wales"],
   },
