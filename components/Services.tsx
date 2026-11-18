@@ -53,14 +53,6 @@ const services = [
     features: ["Contact and enquiry capture", "Booking and CRM connections", "Workflow setup to agreed requirements"],
     tag: "Less repetitive admin",
   },
-  {
-    number: "06",
-    icon: ShieldCheck,
-    title: "Hosting & website care",
-    description: "Keep your website maintained after launch with practical support for updates, backups and day-to-day changes.",
-    features: ["Hosting options", "Updates and backup arrangements", "Ongoing support plans available"],
-    tag: "Support that continues",
-  },
 ];
 
 export default function Services() {
