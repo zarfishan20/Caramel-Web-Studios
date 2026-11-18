@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/terms" },
 };
 
-type LegalSection = { title: string; paragraphs?: string[]; paragraphs2?: string[]; bullets?: string[] };\n\nconst sections: LegalSection[] = [
+type LegalSection = { title: string; paragraphs?: string[]; paragraphs2?: string[]; bullets?: string[] };
+
+const sections: LegalSection[] = [
   {
     title: "1. About these terms",
     paragraphs: ["These Terms of Service apply to your use of the Caramel Web Studios website and the services we provide. Caramel Web Studios is a trading name of Bytesphere Digital Ltd, a company registered in England and Wales under company number 16844459.", "In these terms, “we”, “us” and “our” mean Bytesphere Digital Ltd trading as Caramel Web Studios. “You” and “your” mean the person or organisation engaging our services. “Services” means the services described in section 2 and any additional work agreed in writing."],
